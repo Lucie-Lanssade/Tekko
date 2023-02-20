@@ -15,6 +15,6 @@ const InsightsSchema = new Schema({
   },
   company_review: { type: String },
 });
-const insights = model('Insights', insightsSchema);
+const insights = model('Insights', InsightsSchema);
 
 module.exports = insights;
