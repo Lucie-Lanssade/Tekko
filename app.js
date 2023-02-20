@@ -8,7 +8,7 @@ app.use(express.static(__dirname + "/public"));
 const hbs = require("hbs");
 
 const allRoutes = require("./routes/index.js");
-app.use("/api", allRoutes);
+app.use("/", allRoutes);
 
 require("./error-handling")(app);
 module.exports = app;
