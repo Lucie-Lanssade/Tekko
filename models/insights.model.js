@@ -6,7 +6,7 @@ const InsightsSchema = new Schema(
     title: { type: String, required: true },
     location: { type: String, required: true },
     compensation: { type: Number, required: true },
-    level: { type: Number, enum: ["junior", "intermediate", "senior"] },
+    level: { type: String, enum: ["Junior", "Intermediate", "Senior"] },
     company_xp: { type: Number },
     total_xp: { type: Number, required: true },
     company_note: {
@@ -14,11 +14,11 @@ const InsightsSchema = new Schema(
       required: true,
       enum: [0, 1, 2, 3, 4, 5, 6, 7, 6, 7, 8, 9, 10],
     },
-    company_review: { type: String },
+    company_review: String,
   },
   { timestamps: true }
 );
 
-const insights = model("Insights", InsightsSchema);
+const Insights = model("Insights", InsightsSchema);
 
-module.exports = insights;
+module.exports = Insights;
