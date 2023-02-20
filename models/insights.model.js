@@ -1,4 +1,4 @@
-const { Schema, model } = require('mongoose');
+const { Schema, model } = require("mongoose");
 
 const InsightsSchema = new Schema(
   {
@@ -6,7 +6,7 @@ const InsightsSchema = new Schema(
     title: { type: String, required: true },
     location: { type: String, required: true },
     compensation: { type: Number, required: true },
-    level: { type: Number, enum: ['junior', 'intermediate', 'senior'] },
+    level: { type: Number, enum: ["junior", "intermediate", "senior"] },
     company_xp: { type: Number },
     total_xp: { type: Number, required: true },
     company_note: {
@@ -19,6 +19,6 @@ const InsightsSchema = new Schema(
   { timestamps: true }
 );
 
-const insights = model('Insights', InsightsSchema);
+const insights = model("Insights", InsightsSchema);
 
 module.exports = insights;
