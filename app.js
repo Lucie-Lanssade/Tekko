@@ -5,7 +5,7 @@ const app = express();
 require('./config')(app);
 app.use(express.static(__dirname + '/public'));
 
-const allRoutes = require('./routes/index.routes');
+const allRoutes = require('./routes/index.js');
 app.use('/api', allRoutes);
 
 require('./error-handling')(app);
