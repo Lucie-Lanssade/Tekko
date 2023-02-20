@@ -49,6 +49,50 @@ router.get("/login", (req, res, next) => {
 });
 // POST login page*/
 
+// POST login page*/
+router.post("/login", async (req, res, next) => {
+  const { name, email, password } = req.body;
+  try {
+    //Check if all fields are filled. If not, return login page.
+    if (!name || !email || !password) {
+      return res.render("auth/login", {
+        errorMessage: "Please fill out all the fields",
+      });
+    }
+    //Check if account exists. If not, return login page.
+    const foundUser = await User.findOne(
+      { name: name },
+      { name: 1, email: 1, password: 1 }
+    );
+    if (!foundUser) {
+      return res.render("auth/login", {
+        errorMessage: "This account does not exist. Please sign up first.",
+      });
+    }
+    //checks if the user put the right password. If not, return login page
+    // const bcrypt = require('bcryptjs');
+    const matchingPass = await bcrypt.compare(password, foundUser.password);
+    if (!matchingPass) {
+      return res.render("auth/login", {
+        errorMessage: "wrong password. Please try again",
+      });
+    }
+    req.session.currentUser = foundUser;
+    res.redirect("/profile");
+  } catch (error) {
+    next(error);
+  }
+});
+//POST logout
+router.post("/logout", (req, res, next) => {
+  req.session.destroy((error) => {
+    if (error) {
+      return next(error);
+    }
+    res.redirect("login");
+  });
+});
+
 //POST logout
 //change commit
 
