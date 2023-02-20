@@ -8,7 +8,7 @@ router.get('/', (req, res, next) => {
 /*links auth, user and insights roots to this page*/
 
 router.use('/auth', require('./auth.routes'));
-router.use('/user', require('./user.routes'));
+router.use('/profile', require('./profile.routes'));
 router.use('/insights', require('./insights.routes'));
 
 module.exports = router;
