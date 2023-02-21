@@ -8,17 +8,25 @@ router.get('/', (req, res, next) => {
   res.render('salaries');
 });
 
-// //Get company page
-// router.get('/company', (req, res, next) => {
-//   res.render('company');
-// });
-
 router.get('/company', async (req, res, next) => {
   try {
+    console.log(req.query);
+    let oneCompany = null;
+    let reviews = null;
+    let globalNote = null;
     const allCompanies = await Company.find();
-    console.log(allCompanies);
+    // console.log(allCompanies);
 
-    res.render('company', { allCompanies });
+    if (req.query.company) {
+      oneCompany = await Company.findById(req.query.company);
+      reviews = await Insights.find({ company: req.query.company });
+      globalNote =
+        reviews.reduce((acc, val) => {
+          return acc + val.company_note;
+        }, 0) / reviews.length;
+    }
+
+    res.render('company', { allCompanies, oneCompany, reviews, globalNote });
   } catch (error) {
     next(error);
   }
