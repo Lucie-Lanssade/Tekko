@@ -3,14 +3,12 @@ const Insights = require("../models/Insights.model");
 const mongoose = require("mongoose");
 const Company = require("../models/company.model");
 
-
 /* GET  salaries page */
 router.get("/", (req, res, next) => {
   res.render("salaries");
 });
 
-router.get('/company', async (req, res, next) => {
-
+router.get("/company", async (req, res, next) => {
   try {
     console.log(req.query);
     let oneCompany = null;
@@ -28,9 +26,27 @@ router.get('/company', async (req, res, next) => {
         }, 0) / reviews.length;
     }
 
+    res.render("company", { allCompanies, oneCompany, reviews, globalNote });
+  } catch (error) {
+    next(error);
+  }
+});
 
-    res.render('company', { allCompanies, oneCompany, reviews, globalNote });
+router.post("/", async (req, res, next) => {
+  try {
+    const reviewToCreate = { ...req.body };
+    console.log(reviewToCreate);
 
+    let company = await Company.findOne({ name: reviewToCreate.company });
+    if (!company) {
+      company = await Company.create({ name: reviewToCreate.company });
+    }
+    const insight = await Insights.create({
+      ...reviewToCreate,
+      company: company._id,
+    });
+    console.log(insight);
+    res.redirect("/profile");
   } catch (error) {
     next(error);
   }
