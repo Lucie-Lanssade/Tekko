@@ -1,0 +1,28 @@
+{{! variable companyDetails will be declared in the insights.routes.js file  }}
+
+<select name='selectCompany' id='selectCompany'>
+
+  {{#each companyDetails}}
+    <option value='companyName'>{{name}}</option>
+  {{/each}}
+
+</select>
+
+<div id='companyInfos'>
+
+  <h2> {{companyDetails.name}} </h2>
+
+  <div>
+
+    <ul>
+      <li>location:{{location}}</li>
+      <li>company note:{{company_note}}</li>
+      <li>reviews:</li>
+      {{#each companyDetails}}
+        <p> {{_review}}</p>
+      {{/each}}
+    </ul>
+
+  </div>
+
+</div>
