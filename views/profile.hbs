@@ -8,38 +8,63 @@
 
 
 
-<form action='/profile/buffer' method='post'>
+<form action='/insights' method='post'>
 
     <div>
         <label for='company'>Company : </label>
-        <input type='text' require id="company" name='company' placeholder='Company' />
+        <input type='text' required id="company" name='company' placeholder='Company' />
     </div>
     <div>
         <label for='title'>Job title : </label>
-        <input type='text' require id='title' name='email' placeholder='Title' />
+        <input type='text' required id='title' name='title' placeholder='Title' />
     </div>
     <div>
         <label for='location'>Location : </label>
-        <input type='text' require name='location' placeholder='Location' />
+        <input type='text' required name='location' placeholder='Location' />
     </div>
     <div>
         <label for='compensation'>Compensation : </label>
-        <input type='text' require name='compensation' placeholder='Location' />
+        <input type='text' required name='compensation' placeholder='compensation' />
     </div>
     <div>
         <label for='level'>Level : </label>
-        <input type='text' name='level' require placeholder='Level' />
+        <select name="level" id="level" required>
+            <option value="Junior">Junior</option>
+            <option value="Intermediate">intermediate</option>
+            <option value="Senior">senior</option>
+        </select>
     </div>
     <div>
         <label for='company_xp'>Number company exp : </label>
-        <input type='text' require name='company_xp' placeholder='number of your experience in this company' />
+        <input type='text' required name='company_xp' placeholder='number of your experience in this company' />
+    </div>
+    <div>
+        <label for='company_note'>Note : </label>
+        <select name="company_note" id="note" required>
+            <option value="0">0</option>
+            <option value="1">1</option>
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+        </select>
+
     </div>
     <div>
         <label for='total_xp'> Number field exp : </label>
-        <input type='text' require name='total_xp' placeholder='number of your experience in this field' />
+        <input type='text' required name='total_xp' placeholder='number of your experience in this field' />
+    </div>
+    <div>
+        <label for='company_review'> Comment : </label>
+        <input type='text' required name='company_review' placeholder='Comment' />
     </div>
 
-    <button type="submit">Submit</button>
+    <button type="submit">Create your review</button>
 
 </form>
 
