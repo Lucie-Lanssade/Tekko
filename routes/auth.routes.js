@@ -6,8 +6,8 @@ const bcrypt = require("bcrypt");
 router.get("/signup", (req, res, next) => {
   res.render("auth/signup");
 });
-/* POST signup page */
 
+/* POST signup page */
 router.post("/signup", async (req, res, next) => {
   const { name, email, password } = req.body;
 

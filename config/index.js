@@ -1,12 +1,11 @@
 const express = require("express");
 const hbs = require("hbs");
-
+//"Morgan" est un middleware de journalisation (logging middleware) pour les applications Node.js qui permet de capturer les demandes HTTP et de les enregistrer dans un format facile à lire, généralement dans la console ou dans un fichier.
 const logger = require("morgan");
 const path = require("path");
-
+//"Cookie-parser" est un middleware pour les applications Node.js qui permet de faciliter la gestion des cookies HTTP. Les cookies sont des petits fichiers de données stockés sur le côté client et envoyés avec chaque demande HTTP à un serveur web. Ils sont souvent utilisés pour stocker des informations de session, des préférences utilisateur, des paniers d'achat, etc.
 const cookieParser = require("cookie-parser");
 
-//test push
 module.exports = (app) => {
   app.set("trust proxy", 1);
   // Normalizes the path to the views folder
@@ -17,7 +16,7 @@ module.exports = (app) => {
   app.use(express.static(path.join(__dirname, "..", "public")));
   app.set("view engine", "hbs");
   hbs.registerPartials(path.join(__dirname, "..", "views", "partials"));
-
+  //"Express-session" est un middleware de gestion de session pour les applications Node.js qui permet de stocker des informations de session sur le serveur et de les lier à une session utilisateur unique.
   const session = require("express-session");
   // Store the session in the database
   const MongoStore = require("connect-mongo");

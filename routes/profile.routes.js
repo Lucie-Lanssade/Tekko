@@ -8,9 +8,4 @@ router.get("/", async (req, res, next) => {
   res.render("profile", { allCompanies });
 });
 
-/* GET buffer page */
-router.get("/buffer", (req, res) => {
-  res.render("buffer");
-});
-
 module.exports = router;

@@ -1,6 +1,5 @@
 const router = require("express").Router();
 const Insights = require("../models/Insights.model");
-const mongoose = require("mongoose");
 const Company = require("../models/company.model");
 
 /* GET  salaries page */
