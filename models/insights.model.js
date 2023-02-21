@@ -3,6 +3,8 @@ const { Schema, model } = require('mongoose');
 const InsightsSchema = new Schema(
   {
     company: { type: Schema.Types.ObjectId, ref: 'Company' },
+    location: { type: String, required: true },
+
     title: { type: String, required: true },
     compensation: { type: Number, required: true },
     level: { type: String, enum: ['Junior', 'Intermediate', 'Senior'] },

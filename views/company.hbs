@@ -18,19 +18,18 @@
 {{#if oneCompany}}
   <div id='companyInfos'>
 
-    <h2> {{oneCompany.company}} </h2>
+    <h2> {{oneCompany.name}} </h2>
 
     <div>
-
-      <ul>
-        <li>location:{{oneCompany.location}}</li>
-        <li>company note:{{oneCompany.company_note}}</li>
-        <li>reviews:</li>
-        {{#each oneCompany}}
-          <p> {{_review}}</p>
-        {{/each}}
-      </ul>
-
+      <p>Note generale: <span class='note'>{{globalNote}}</span></p>
+      <h2>Reviews</h2>
+      {{#each reviews}}
+        <ul>
+          <li>location:{{location}}</li>
+          <li>company note:{{company_note}}</li>
+          <li>Review: {{company_review}}</li>
+        </ul>
+      {{/each}}
     </div>
 
   </div>
