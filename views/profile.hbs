@@ -1,4 +1,3 @@
-
 {{!-- JL --}}
 <h1>Welcome {{currentUser.name}}</h1>
 <p>Help all the begginers to have the salaries overview, <b>the form is TOTALLY ANONYMOUS</b></p>
@@ -6,13 +5,18 @@
 <p class='error'>{{errorMessage}}</p>
 {{/if}}
 
-
-
 <form action='/insights' method='post'>
 
     <div>
+
         <label for='company'>Company : </label>
-        <input type='text' required id="company" name='company' placeholder='Company' />
+        <input list="companyCreated" required id="company" name='company' placeholder='Company' />
+        <datalist id="companyCreated">
+            {{#each allCompanies}}
+            <option value="{{name}}">
+            {{/each}}
+        </datalist>
+
     </div>
     <div>
         <label for='title'>Job title : </label>
@@ -67,6 +71,3 @@
     <button type="submit">Create your review</button>
 
 </form>
-
-
-
