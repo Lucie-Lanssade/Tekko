@@ -1,24 +1,24 @@
-const router = require('express').Router();
-const Insights = require('../models/Insights.model');
-const mongoose = require('mongoose');
-const Company = require('../models/company.model');
+const router = require("express").Router();
+const Insights = require("../models/Insights.model");
+const mongoose = require("mongoose");
+const Company = require("../models/company.model");
 
 /* GET  salaries page */
-// router.get('/', (req, res, next) => {
-//   res.render('salaries');
-// });
-
-//Get company page
-router.get('/company', (req, res, next) => {
-  res.render('company');
+router.get("/", (req, res, next) => {
+  res.render("salaries");
 });
 
-router.get('/company', async (req, res, next) => {
+// //Get company page
+// router.get("/company", (req, res, next) => {
+//   res.render("company");
+// });
+
+router.get("/company", async (req, res, next) => {
   try {
     const allCompanies = await Company.find();
     console.log(allCompanies);
 
-    res.render('company', { allCompanies });
+    res.render("company", { allCompanies });
   } catch (error) {
     next(error);
   }
