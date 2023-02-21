@@ -1,1 +1,24 @@
-<h1>SIGNUP</h1>
+<h1>Sign Up session</h1>
+{{#if errorMessage}}
+<p class='error'>{{errorMessage}}</p>
+{{/if}}
+
+<form action='/auth/signup' method='post'>
+    
+    <div>
+        <label for='name'>Username </label>
+        <input type='text' name='name' placeholder='Username' />
+    </div>
+    <div>
+        <label for='email'>Email: </label>
+        <input type='text' id='email' name='email' placeholder='E-Mail' />
+    </div>
+    <div>
+        <label for='password'>Password </label>
+        <input type='password' required name='password' placeholder='Password' />
+    </div>
+
+    <button type="submit">Create an account</button>
+
+    <p>Already have an account? <a href='/auth/login'>Login</a></p>
+</form>

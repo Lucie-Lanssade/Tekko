@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const User = require("../models/User.model");
-const mongoose = require("mongoose");
+const bcrypt = require("bcrypt");
 
 /* GET signup page */
 router.get("/signup", (req, res, next) => {
@@ -9,13 +9,20 @@ router.get("/signup", (req, res, next) => {
 /* POST signup page */
 
 router.post("/signup", async (req, res, next) => {
-  const { username, password } = req.body;
+  const { name, email, password } = req.body;
 
-  console.log({ username, password });
+  console.log({ name, email, password });
   try {
-    if (!username || !password) {
+    if (!name || !password || !email) {
       return res.render("auth/signup", {
         errorMessage: "Please fill out all of the fields!",
+      });
+    }
+    //les requirements pour permettre de ne pas mettre n'importe quelle adresse
+    const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!regex.test(email)) {
+      return res.render("auth/signup", {
+        errorMessage: "Error mail ! Try again",
       });
     }
     if (password.length < 6) {
@@ -23,7 +30,7 @@ router.post("/signup", async (req, res, next) => {
         errorMessage: "Please put a longer password",
       });
     }
-    const foundUser = await User.findOne({ username: username });
+    const foundUser = await User.findOne({ name: name });
     if (foundUser) {
       return res.render("auth/signup", {
         errorMessage: "Theres another one of you!",
@@ -32,12 +39,13 @@ router.post("/signup", async (req, res, next) => {
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
     const userToCreate = {
-      username,
+      name,
+      email,
       password: hashedPassword,
     };
     const userFromDb = await User.create(userToCreate);
     console.log(userFromDb);
-    res.redirect("/login");
+    res.redirect("/auth/login");
   } catch (error) {
     next(error);
   }
@@ -47,14 +55,13 @@ router.post("/signup", async (req, res, next) => {
 router.get("/login", (req, res, next) => {
   res.render("auth/login");
 });
-// POST login page*/
 
 // POST login page*/
 router.post("/login", async (req, res, next) => {
-  const { name, email, password } = req.body;
+  const { name, password } = req.body;
   try {
     //Check if all fields are filled. If not, return login page.
-    if (!name || !email || !password) {
+    if (!name || !password) {
       return res.render("auth/login", {
         errorMessage: "Please fill out all the fields",
       });
@@ -62,7 +69,7 @@ router.post("/login", async (req, res, next) => {
     //Check if account exists. If not, return login page.
     const foundUser = await User.findOne(
       { name: name },
-      { name: 1, email: 1, password: 1 }
+      { name: 1, password: 1 }
     );
     if (!foundUser) {
       return res.render("auth/login", {
@@ -89,11 +96,8 @@ router.post("/logout", (req, res, next) => {
     if (error) {
       return next(error);
     }
-    res.redirect("login");
+    res.redirect("/auth/login");
   });
 });
-
-//POST logout
-//change commit
 
 module.exports = router;
