@@ -14,7 +14,15 @@ const isLoggedOut = (req, res, next) => {
   next();
 };
 
+const exposeUserToView = (req, res, next) => {
+  if (req.session.currentUser) {
+    res.locals.currentUser = req.session.currentUser;
+  }
+  next();
+};
+
 module.exports = {
   isLoggedIn,
   isLoggedOut,
+  exposeUserToView,
 };
