@@ -1,0 +1,42 @@
+{{!-- JL --}}
+<h1>Welcome {{currentUser.name}}</h1>
+<p>Help all the begginers to have the salaries overview, <b>the form is TOTALLY ANONYMOUS</b></p>
+{{#if errorMessage}}
+<p class='error'>{{errorMessage}}</p>
+{{/if}}
+
+<form action='/auth/profile/buffer' method='post'>
+
+    <div>
+        <label for='company'>Company : </label>
+        <input type='text'require id="company" name='company' placeholder='Company' />
+    </div>
+    <div>
+        <label for='title'>Title Job: </label>
+        <input type='text' require id='title' name='email' placeholder='Title' />
+    </div>
+    <div>
+        <label for='location'>Location : </label>
+        <input type='text' require name='location' placeholder='Location' />
+    </div>
+    <div>
+        <label for='compensation'>Compensation : </label>
+        <input type='text' require name='compensation' placeholder='Location' />
+    </div>
+    <div>
+        <label for='level'>Level : </label>
+        <input type='text' name='level' require placeholder='Level' />
+    </div>
+    <div>
+        <label for='company_xp'>Number company exp : </label>
+        <input type='text' require name='company_xp' placeholder='number of your experience in this company' />
+    </div>
+    <div>
+        <label for='total_xp'> Number field exp : </label>
+        <input type='text' require name='total_xp' placeholder='number of your experience in this field' />
+    </div>
+
+    <button type="submit">Submit</button>
+
+    <p>You don't want to fill in ?... too bad... click <a href='/profile'>here</a></p>otherwise  
+</form>
