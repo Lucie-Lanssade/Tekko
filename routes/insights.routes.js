@@ -3,6 +3,7 @@ const Insights = require("../models/Insights.model");
 const mongoose = require("mongoose");
 const Company = require("../models/company.model");
 
+
 /* GET  salaries page */
 router.get("/", (req, res, next) => {
   res.render("salaries");
@@ -14,6 +15,7 @@ router.get("/", (req, res, next) => {
 // });
 
 router.get("/company", async (req, res, next) => {
+
   try {
     const allCompanies = await Company.find();
     console.log(allCompanies);
