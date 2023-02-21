@@ -1,28 +1,31 @@
-{{! variable companyDetails will be declared in the insights.routes.js file  }}
+{{! variables companyDetails and oneCompany will be declared in the insights.routes.js file  }}
+<form action='' method='post'>
+  <select name='companyName' id='companyName'>
 
-<select name='selectCompany' id='selectCompany'>
+    {{#each companyDetails}}
+      <option value='{{name}}'>{{name}}</option>
+    {{/each}}
 
-  {{#each companyDetails}}
-    <option value='companyName'>{{name}}</option>
-  {{/each}}
+  </select>
+</form>
 
-</select>
+{{#if oneCompany}}
+  <div id='companyInfos'>
 
-<div id='companyInfos'>
+    <h2> {{oneCompany.name}} </h2>
 
-  <h2> {{companyDetails.name}} </h2>
+    <div>
 
-  <div>
+      <ul>
+        <li>location:{{oneCompany.location}}</li>
+        <li>company note:{{oneCompany_note}}</li>
+        <li>reviews:</li>
+        {{#each oneCompany}}
+          <p> {{_review}}</p>
+        {{/each}}
+      </ul>
 
-    <ul>
-      <li>location:{{location}}</li>
-      <li>company note:{{company_note}}</li>
-      <li>reviews:</li>
-      {{#each companyDetails}}
-        <p> {{_review}}</p>
-      {{/each}}
-    </ul>
+    </div>
 
   </div>
-
-</div>
+{{/if}}
