@@ -5,7 +5,7 @@
   <select name='company' id='companyName'>
 
     {{#each allCompanies}}
-      <option value='{{_id}}'>{{allCompanies.name}}</option>
+      <option value='{{_id}}'>{{this.name}}</option>
     {{/each}}
 
   </select>
