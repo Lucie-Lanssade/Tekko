@@ -11,6 +11,9 @@ const companyReviewInput = document.getElementById("companyReview");
 
 const myUrl = "http://127.0.0.1:5005/insights";
 
+//permet de nous renvoyer les cookies de l'utilisateur
+axios.defaults.withCredentials = true;
+
 function displayUser(element) {
   const cloneUser = template.content.cloneNode(true);
   //recuperer le nom de la compagnie pose probleme car on recupere que l'id ... trouver le moyen d'attendre l'objet de company
@@ -31,7 +34,7 @@ function displayUser(element) {
 async function displayAll() {
   try {
     const { data } = await axios.get(myUrl + "/userInfos");
-    // console.log(data);
+    console.log(data);
     userContainer.innerHTML = null;
 
     if (data) {
@@ -73,7 +76,7 @@ async function createUser(event) {
   };
   try {
     const { data } = await axios.post(myUrl, userCreate);
-    console.log("created");
+    console.log(data);
     displayAll();
   } catch (error) {
     console.log(error);
