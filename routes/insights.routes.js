@@ -51,7 +51,7 @@ router.post("/", async (req, res, next) => {
       company: company._id,
       creator: req.session.currentUser._id,
     });
-    console.log("Insight: ", insight);
+    // console.log("Insight: ", insight);
     res.status(200).json(insight);
   } catch (error) {
     next(error);
@@ -65,7 +65,7 @@ router.get("/userInfos", async (req, res, next) => {
       creator: req.session.currentUser._id,
     }).populate("company");
     res.status(200).json(user);
-    console.log(user);
+    // console.log(user);
   } catch (error) {
     next(error);
   }
@@ -76,7 +76,8 @@ router.get("/userInfos", async (req, res, next) => {
 //  */
 router.patch("/userInfos/:id", async (req, res, next) => {
   const id = req.params.id;
-  const insightToUpdate = { ...req.body };
+  const insightToUpdate = req.body;
+  console.log(insightToUpdate);
   try {
     if (!insightToUpdate) {
       return res.json({ message: `review not found` });
@@ -87,7 +88,7 @@ router.patch("/userInfos/:id", async (req, res, next) => {
       res.json({ message: `You're updating your review` });
     }
   } catch (error) {
-    next(200);
+    next(error);
   }
 });
 
