@@ -50,3 +50,17 @@ nav {
 .navBtns {
     color: red
 }
+
+#logo img {
+    width: 40px;
+    height: auto
+}
+
+
+
+#navLogin {
+    padding: 1rem 2rem;
+    background-color: #ABD699;
+}
+
+#navSignup {}
