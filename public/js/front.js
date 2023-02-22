@@ -1,3 +1,4 @@
+//create
 const userContainer = document.querySelector(".userContainer");
 const idInput = document.querySelector(".idInput");
 const companyInput = document.getElementById("company");
@@ -48,13 +49,12 @@ function displayUser(element) {
 async function displayAll() {
   try {
     const { data } = await axios.get(myUrl + "/userInfos");
-    console.log(data);
     userContainer.innerHTML = null;
 
     if (data) {
       for (const user of data) {
         //a voir si ca marche ou pas
-        console.log(user);
+        // console.log(user);
         displayUser(user);
       }
     } else {
@@ -130,6 +130,7 @@ async function updateReview(e) {
       reviewEdit
     );
     console.log(review);
+    // console.log(review);
     await displayAll();
   } catch (error) {
     console.log(error);
@@ -138,3 +139,5 @@ async function updateReview(e) {
 
 displayAll();
 document.querySelector("#createForm").addEventListener("submit", createUser);
+
+document.getElementById("editBtn").addEventListener("submit", updateReview);
