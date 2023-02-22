@@ -1,25 +1,25 @@
-<h1>Sign Up session</h1>
 {{#if errorMessage}}
   <p class='error'>{{errorMessage}}</p>
 {{/if}}
-
+<h1>Sign up now</h1>
+<h3>take the first step towards making informed decisions about your career.</h3>
 <form action='/auth/signup' method='post'>
 
-  <div>
-    <label for='name'>Username </label>
+  <div class='inputForm'>
+    <label for='name'>username: </label>
     <input type='text' name='name' placeholder='Username' />
   </div>
-  <div>
-    <label for='email'>Email: </label>
+  <div class='inputForm'>
+    <label for='email'>email: </label>
     <input type='text' id='email' name='email' placeholder='E-Mail' />
   </div>
-  <div>
-    <label for='password'>Password </label>
-    <input type='password' required name='password' placeholder='Password' />
+  <div class='inputForm'>
+    <label for='password'>password: </label>
+    <input type='password' required name='password' placeholder='*********' />
   </div>
 
-  <button type='submit'>Create an account</button>
+  <button type='submit'>create my account</button>
 
-  <p>Already have an account? <a href='/auth/login'>Login</a></p>
-  <p>Return Home page <a href='/'>Here</a></p>
+  <p>Already have an account? <a href='/auth/login'>login</a></p>
+
 </form>

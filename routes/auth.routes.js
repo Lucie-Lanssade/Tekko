@@ -53,7 +53,7 @@ router.post('/signup', async (req, res, next) => {
 
 /* GET  login page */
 router.get('/login', (req, res, next) => {
-  res.render('auth/login');
+  res.render('auth/login', { stylesheets: ['auth'] });
 });
 
 // POST login page*/
