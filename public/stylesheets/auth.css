@@ -3,8 +3,11 @@ form {
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    margin: auto;
     gap: 2rem;
     background-color: #C7DDCC;
     border-radius: 10px;
-    max-width: 30rem;
+    max-width: 25rem;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
