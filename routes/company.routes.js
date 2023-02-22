@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Insights = require('../models/Insights.model');
+const Insights = require('../models/insights.model');
 const mongoose = require('mongoose');
 
 /* GET  page */
