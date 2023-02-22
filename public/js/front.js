@@ -1,7 +1,7 @@
 const userContainer = document.querySelector(".userContainer");
 const companyInput = document.getElementById("company");
 const titleInput = document.getElementById("title");
-const locationInput = document.getElementByid("location");
+const locationInput = document.getElementById("location");
 const compensationInput = document.getElementById("compensation");
 const levelInput = document.getElementById("level");
 const companyXpInput = document.getElementById("companyXp");
@@ -9,9 +9,9 @@ const noteInput = document.getElementById("note");
 const totalXpInput = document.getElementById("totalXp");
 const companyReviewInput = document.getElementById("companyReview");
 
-const myUrl = "http://127.0.0.1:5005/profile";
+const myUrl = "http://127.0.0.1:5005/insights";
 
-function createUser(element) {
+function displayUser(element) {
   const cloneUser = template.content.cloneNode(true);
   //recuperer le nom de la compagnie pose probleme car on recupere que l'id ... trouver le moyen d'attendre l'objet de company
   cloneUser.querySelector(".userCompany span").textContent = element.company;
@@ -30,14 +30,18 @@ function createUser(element) {
 
 async function displayAll() {
   try {
-    const { data } = await axios.get(myUrl);
+    const { data } = await axios.get(myUrl + "/userInfos");
     // console.log(data);
-    for (const user of data) {
-      //a voir si ca marche ou pas
-      if (!user) {
-        return (userContainer.textContent = "Oups... no result... try again");
+    userContainer.innerHTML = null;
+
+    if (data) {
+      for (const user of data) {
+        //a voir si ca marche ou pas
+        console.log(user);
+        displayUser(user);
       }
-      createUser(user);
+    } else {
+      userContainer.textContent = "Oups... no result...";
     }
   } catch (error) {
     console.log(error);
@@ -70,13 +74,10 @@ async function createUser(event) {
   try {
     const { data } = await axios.post(myUrl, userCreate);
     console.log("created");
-    if (data) {
-      createUser(data);
-      displayAll();
-    }
+    displayAll();
   } catch (error) {
     console.log(error);
   }
 }
 
-document.getElementById("createBtn").addEventListener("submit", createUser);
+document.querySelector("#createForm").addEventListener("submit", createUser);
