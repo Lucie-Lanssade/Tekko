@@ -1,0 +1,52 @@
+/* colors used:
+green: #ABD699
+yellow:#FFE26A
+blue:#75C9B7
+light-blue:#C7DDCC
+dark-blue: #16123F */
+
+
+
+
+
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;400;600;800&display=swap');
+
+
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+
+/* Navbar styling */
+
+nav {
+    height: 3.3rem;
+    background-color: #FFE26A;
+    display: flex;
+    flex-direction: row;
+
+    align-items: center;
+    justify-content: space-around;
+    gap: 4rem
+}
+
+.navBarLinks {
+    display: flex;
+    flex-direction: row;
+    gap: 1rem;
+}
+
+.navBarLinks a {
+
+    text-decoration: none;
+    color: black
+}
+
+.navBtns {
+    color: red
+}
