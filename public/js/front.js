@@ -30,7 +30,7 @@ function displayUser(element) {
 
 async function displayAll() {
   try {
-    const { data } = await axios.get("http://127.0.0.1:5005/insights/mine");
+    const { data } = await axios.get(myUrl + "/userInfos");
     // console.log(data);
     userContainer.innerHTML = null;
 
