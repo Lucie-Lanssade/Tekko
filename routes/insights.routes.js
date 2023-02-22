@@ -1,20 +1,20 @@
-const router = require('express').Router();
-const Insights = require('../models/Insights.model');
-const Company = require('../models/company.model');
+const router = require("express").Router();
+const Insights = require("../models/Insights.model");
+const Company = require("../models/company.model");
 
 /* GET  salaries page */
-router.get('/', async (req, res, next) => {
-  const allSalaries = await Insights.find().populate('company');
+router.get("/", async (req, res, next) => {
+  const allSalaries = await Insights.find().populate("company");
   console.log(allSalaries);
 
   const companyName = await Insights.find({ name: Company.name });
   console.log(companyName);
 
-  res.render('salaries', { allSalaries, companyName });
+  res.render("salaries", { allSalaries, companyName });
 });
 
 //Get company page
-router.get('/company', async (req, res, next) => {
+router.get("/company", async (req, res, next) => {
   try {
     console.log(req.query);
     let oneCompany = null;
@@ -31,13 +31,13 @@ router.get('/company', async (req, res, next) => {
         }, 0) / reviews.length;
     }
 
-    res.render('company', { allCompanies, oneCompany, reviews, globalNote });
+    res.render("company", { allCompanies, oneCompany, reviews, globalNote });
   } catch (error) {
     next(error);
   }
 });
 
-router.post('/', async (req, res, next) => {
+router.post("/", async (req, res, next) => {
   try {
     const reviewToCreate = { ...req.body };
     console.log(reviewToCreate);
@@ -51,7 +51,7 @@ router.post('/', async (req, res, next) => {
       company: company._id,
     });
     console.log(insight);
-    res.redirect('/profile');
+    res.status(200).json(insight);
   } catch (error) {
     next(error);
   }
