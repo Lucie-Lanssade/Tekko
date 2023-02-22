@@ -1,1 +1,25 @@
-<h1>salaries</h1>
+<h1>Browse all salaries</h1>
+
+<h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium
+  sequi amet dolorem adipisci quidem nihil explicabo asperiores, perspiciatis
+  illo blanditiis autem quis! Quasi, fuga accusantium. Molestiae magnam deleniti
+  blanditiis rerum velit nemo repudiandae id quos maiores minima. Nemo
+  voluptates voluptate consequuntur velit libero officiis qui reiciendis iste
+  cum, magni, fugiat cupiditate iusto ab quasi dolorum beatae aliquid ratione
+  repudiandae.</h4>
+
+{{#each allSalaries}}
+  <div>
+
+    <ul>
+      <li>job title: {{this.title}}</li>
+      <li>company:{{this.company.name}}</li>
+      <li>annual compensation:{{this.compensation}}€</li>
+      <li>city:{{this.location}}</li>
+      <li>level:{{this.level}}</li>
+      <li>numbers of years in this company:{{this.company_xp}}</li>
+      <li>numbers of years in this field:{{this.total_xp}}</li>
+    </ul>
+  </div>
+
+{{/each}}
