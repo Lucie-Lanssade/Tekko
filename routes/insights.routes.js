@@ -5,10 +5,10 @@ const Company = require("../models/company.model");
 /* GET  salaries page */
 router.get("/", async (req, res, next) => {
   const allSalaries = await Insights.find().populate("company");
-  console.log(allSalaries);
+  // console.log(allSalaries);
 
   const companyName = await Insights.find({ name: Company.name });
-  console.log(companyName);
+  // console.log(companyName);
 
   res.render("salaries", { allSalaries, companyName });
 });
@@ -16,7 +16,7 @@ router.get("/", async (req, res, next) => {
 //Get company page
 router.get("/company", async (req, res, next) => {
   try {
-    console.log(req.query);
+    // console.log(req.query);
     let oneCompany = null;
     let reviews = null;
     let globalNote = null;
@@ -40,7 +40,7 @@ router.get("/company", async (req, res, next) => {
 router.post("/", async (req, res, next) => {
   try {
     const reviewToCreate = { ...req.body };
-    console.log(reviewToCreate);
+    // console.log(reviewToCreate);
 
     let company = await Company.findOne({ name: reviewToCreate.company });
     if (!company) {
@@ -49,8 +49,9 @@ router.post("/", async (req, res, next) => {
     const insight = await Insights.create({
       ...reviewToCreate,
       company: company._id,
+      creator: req.session.currentUser._id,
     });
-    console.log(insight);
+    console.log("Insight: ", insight);
     res.status(200).json(insight);
   } catch (error) {
     next(error);
@@ -59,9 +60,10 @@ router.post("/", async (req, res, next) => {
 
 router.get("/userInfos", async (req, res, next) => {
   try {
+    console.log(req.session.currentUser);
     let user = await Insights.find({
       creator: req.session.currentUser._id,
-    }).exec();
+    });
     res.status(200).json(user);
     console.log(user);
   } catch (error) {
