@@ -6,10 +6,8 @@
 {{/if}}
 <div class="profileContainer">
 
-<form action='/insights' method='post'>
-
+<form action='/profile' method='post'>
     <div>
-
         <label for='company'>Company : </label>
         <input list="companyCreated" required id="company" name='company' placeholder='Company' />
         <datalist id="companyCreated">
@@ -25,11 +23,11 @@
     </div>
     <div>
         <label for='location'>Location : </label>
-        <input type='text' required name='location' placeholder='Location' />
+        <input type='text' id="location" required name='location' placeholder='Location' />
     </div>
     <div>
         <label for='compensation'>Compensation : </label>
-        <input type='text' required name='compensation' placeholder='compensation' />
+        <input type='text' id="compensation" required name='compensation' placeholder='compensation' />
     </div>
     <div>
         <label for='level'>Level : </label>
@@ -41,7 +39,7 @@
     </div>
     <div>
         <label for='company_xp'>Number company exp : </label>
-        <input type='text' required name='company_xp' placeholder='number of your experience in this company' />
+        <input type='text' id="companyXp" required name='company_xp' placeholder='number of your experience in this company' />
     </div>
     <div>
         <label for='company_note'>Note : </label>
@@ -62,31 +60,42 @@
     </div>
     <div>
         <label for='total_xp'> Number field exp : </label>
-        <input type='text' required name='total_xp' placeholder='number of your experience in this field' />
+        <input type='text' id="totalXp" required name='total_xp' placeholder='number of your experience in this field' />
     </div>
     <div>
         <label for='company_review'> Comment : </label>
-        <input type='text' required name='company_review' placeholder='Comment' />
+        <input type='text' required id="companyReview" name='company_review' placeholder='Comment' />
     </div>
 
-    <button type="submit">Create your review</button>
+    <button id="createBtn" type="submit">Create your review</button>
 
 </form>
 
-{{!-- submit add event listener sur la form
-event.preventDefault()
-mettre dans un objet .value
---}}
+
+<div class="userContainer">
+    <div class="user-info">
+        <div class="userCompany"></div>
+        <div class="userLocation"></div>
+        <div class="userJob"></div>
+        <div class="userCompensation"></div>
+        <div class="userLevel"></div>
+        <div class="userNote"> </div>
+        <div class="userXp"></div>
+        <div class="jobXp"></div>
+        <div class="userComment"></div>
+    </div>
+</div>
 
 <template id="template">
     <div class="user-info">
         <div class="userCompany">Company: <span></span></div>
-        <div class="userJob">Job title: <span></span></div>
         <div class="userLocation">Location: <span></span></div>
+        <div class="userJob">Job title: <span></span></div>
         <div class="userCompensation">Compensation: <span></span></div>
         <div class="userLevel">Number company exp: <span></span></div>
         <div class="userNote">Note: <span></span></div>
         <div class="userXp">Number field exp: <span></span></div>
+        <div class="jobXp">Number current job exp: <span></span></div>
         <div class="userComment">Comment:<span></span></div>
     </div>
 </template>
