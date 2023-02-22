@@ -63,11 +63,31 @@ router.get("/userInfos", async (req, res, next) => {
     console.log(req.session.currentUser);
     let user = await Insights.find({
       creator: req.session.currentUser._id,
-    });
+    }).populate("company");
     res.status(200).json(user);
     console.log(user);
   } catch (error) {
     next(error);
+  }
+});
+
+//  * ? This route should update a insight(user) and respond with
+//  * ? the updated insight(user)
+//  */
+router.patch("/userInfos/:id", async (req, res, next) => {
+  const id = req.params.id;
+  const insightToUpdate = { ...req.body };
+  try {
+    if (!insightToUpdate) {
+      return res.json({ message: `review not found` });
+    } else {
+      await Insights.findByIdAndUpdate(id, insightToUpdate, {
+        new: true,
+      });
+      res.json({ message: `You're updating your review` });
+    }
+  } catch (error) {
+    next(200);
   }
 });
 
