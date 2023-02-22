@@ -31,7 +31,12 @@ router.get('/company', async (req, res, next) => {
         }, 0) / reviews.length;
     }
 
-    res.render('company', { allCompanies, oneCompany, reviews, globalNote });
+    res.render('company', {
+      allCompanies,
+      oneCompany,
+      reviews,
+      globalNote,
+    });
   } catch (error) {
     next(error);
   }
