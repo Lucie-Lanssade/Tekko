@@ -3,23 +3,24 @@
 
     <div id='logo'>
       <img src='images/Tekko-logo.png' alt='' />
-    </div>
-    <div class='navBarLinks'>
       <a href='/insights/company'>Company insights</a>
       <a href='/insights'>Salaries insights</a>
-      {{!-- {{#if currentUser}} --}}
+    </div>
+    <div class='logs'>
+      {{#if currentUser}}
 
-      <form action='/auth/logout' method='POST'>
-        <button>Logout</button>
-      </form>
+        <form action='/auth/logout' method='POST'>
+          <button id='logout'>Logout</button>
+        </form>
 
+      {{else}}
+
+        <a id='navLogin' href='/auth/login'>Login</a>
+
+        <a id='navSignup' href='/'>SignUp</a>
+
+      {{/if}}
     </div>
 
-    <div class='navbtns'>
-      {{!-- {{else}} --}}
-      <a id='navLogin' href='/auth/login'>Login</a>
-      <a id='navSignup' href='/auth/signup'>SignUp</a>
-      {{!-- {{/if}} --}}
-    </div>
   </nav>
 </header>

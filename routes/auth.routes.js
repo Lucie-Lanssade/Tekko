@@ -96,7 +96,7 @@ router.post('/logout', (req, res, next) => {
     if (error) {
       return next(error);
     }
-    res.redirect('/auth/login');
+    res.redirect('/');
   });
 });
 
