@@ -77,7 +77,7 @@ router.get("/userInfos", async (req, res, next) => {
 router.patch("/userInfos/:id", async (req, res, next) => {
   const id = req.params.id;
   const insightToUpdate = req.body;
-  console.log(insightToUpdate);
+
   try {
     if (!insightToUpdate) {
       return res.json({ message: `review not found` });
