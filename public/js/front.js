@@ -11,16 +11,17 @@ const noteInput = document.getElementById("note");
 const totalXpInput = document.getElementById("totalXp");
 const companyReviewInput = document.getElementById("companyReview");
 //update
-const idEdit = document.querySelector(".idEdit");
-const companyEdit = document.querySelector(".companyEdit");
-const titleEdit = document.querySelector(".titleEdit");
-const locationEdit = document.querySelector(".locationEdit");
-const compensationEdit = document.querySelector(".compensationEdit");
-const levelEdit = document.querySelector(".levelEdit");
-const companyXpEdit = document.querySelector(".companyXpEdit");
-const noteEdit = document.querySelector(".noteEdit");
-const totalXpEdit = document.querySelector(".totalXpEdit");
-const companyReviewEdit = document.querySelector(".companyReviewEdit");
+const idEdit = document.getElementById("idEdit");
+const companyEdit = document.getElementById("companyEdit");
+const titleEdit = document.getElementById("titleEdit");
+const locationEdit = document.getElementById("locationEdit");
+const compensationEdit = document.getElementById("compensationEdit");
+const levelEdit = document.getElementById("levelEdit");
+const companyXpEdit = document.getElementById("companyXpEdit");
+const noteEdit = document.getElementById("noteEdit");
+const totalXpEdit = document.getElementById("totalXpEdit");
+const companyReviewEdit = document.getElementById("companyReviewEdit");
+const editform = document.getElementById("editform");
 
 const myUrl = "http://127.0.0.1:5005/insights";
 
@@ -99,8 +100,8 @@ async function createUser(event) {
 
 // UPDATE REVIEW
 
-async function updateReview(e) {
-  e.preventDefault();
+async function updateReview(event) {
+  event.preventDefault();
   const id = idEdit.value;
   const company = companyEdit.value;
   const title = titleEdit.value;
@@ -125,12 +126,8 @@ async function updateReview(e) {
   };
 
   try {
-    const review = await axios.patch(
-      myUrl + "/userInfos" + "/" + id,
-      reviewEdit
-    );
+    const review = await axios.patch(myUrl + "/userInfos/" + id, reviewEdit);
     console.log(review);
-    // console.log(review);
     await displayAll();
   } catch (error) {
     console.log(error);
@@ -140,4 +137,4 @@ async function updateReview(e) {
 displayAll();
 document.querySelector("#createForm").addEventListener("submit", createUser);
 
-document.getElementById("editBtn").addEventListener("submit", updateReview);
+document.getElementById("editform").addEventListener("submit", updateReview);
