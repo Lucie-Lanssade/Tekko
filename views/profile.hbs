@@ -4,6 +4,7 @@
 {{#if errorMessage}}
 <p class='error'>{{errorMessage}}</p>
 {{/if}}
+<div class="profileContainer">
 
 <form action='/insights' method='post'>
 
@@ -71,3 +72,23 @@
     <button type="submit">Create your review</button>
 
 </form>
+
+{{!-- submit add event listener sur la form
+event.preventDefault()
+mettre dans un objet .value
+--}}
+
+<template id="template">
+    <div class="user-info">
+        <div class="userCompany">Company: <span></span></div>
+        <div class="userJob">Job title: <span></span></div>
+        <div class="userLocation">Location: <span></span></div>
+        <div class="userCompensation">Compensation: <span></span></div>
+        <div class="userLevel">Number company exp: <span></span></div>
+        <div class="userNote">Note: <span></span></div>
+        <div class="userXp">Number field exp: <span></span></div>
+        <div class="userComment">Comment:<span></span></div>
+    </div>
+</template>
+
+</div>
