@@ -2,13 +2,16 @@
   <nav>
 
     <div id='logo'>
-      <img src='/images/Tekko-logo.png' alt='' />
+      <a href='/'><img src='/images/Tekko-logo.png' alt='' /></a>
       <a href='/insights/company'>companies reviews</a>
       <a href='/insights'>salaries insights</a>
     </div>
     <div class='logs'>
       {{#if currentUser}}
 
+        <form action='/profile' method='POST'>
+          <button id='profile'>Profile</button>
+        </form>
         <form action='/auth/logout' method='POST'>
           <button id='logout'>Logout</button>
         </form>

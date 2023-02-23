@@ -8,18 +8,21 @@
   cum, magni, fugiat cupiditate iusto ab quasi dolorum beatae aliquid ratione
   repudiandae.</h4>
 
-{{#each allSalaries}}
-  <div>
+<section class='company-container'>
+  {{#each allSalaries}}
 
-    <ul>
-      <li>job title: {{this.title}}</li>
-      <li>company:{{this.company.name}}</li>
-      <li>annual compensation:{{this.compensation}}€</li>
-      <li>city:{{this.location}}</li>
-      <li>level:{{this.level}}</li>
-      <li>numbers of years in this company:{{this.company_xp}}</li>
-      <li>numbers of years in this field:{{this.total_xp}}</li>
-    </ul>
-  </div>
+    <article class='companies'>
 
-{{/each}}
+      <ul>
+        <li> <span>job title:</span> {{this.title}}</li>
+        <li><span>company:</span>{{this.company.name}}</li>
+        <li><span>annual compensation:</span>{{this.compensation}}€</li>
+        <li><span>city:</span>{{this.location}}</li>
+        <li><span>level:</span>{{this.level}}</li>
+        <li><span>seniority:</span>{{this.company_xp}}</li>
+        <li><span>years of experience:</span>{{this.total_xp}}</li>
+      </ul>
+    </article>
+
+  {{/each}}
+</section>

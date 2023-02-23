@@ -10,7 +10,11 @@ router.get('/', async (req, res, next) => {
   const companyName = await Insights.find({ name: Company.name });
   console.log(companyName);
 
-  res.render('salaries', { allSalaries, companyName });
+  res.render('salaries', {
+    allSalaries,
+    companyName,
+    stylesheets: { stylesheets: ['salaries'] },
+  });
 });
 
 //Get company page
@@ -37,6 +41,7 @@ router.get('/company', async (req, res, next) => {
   }
 });
 
+//Post route for profile page
 router.post('/', async (req, res, next) => {
   try {
     const reviewToCreate = { ...req.body };

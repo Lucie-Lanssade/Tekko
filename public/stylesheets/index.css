@@ -95,3 +95,17 @@ nav {
     border-radius: 8px;
     margin-right: 1rem;
 }
+
+#profile {
+    all: unset;
+    font-weight: 800;
+    font-size: 1.3rem;
+}
+
+
+.logs {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 2rem
+}
