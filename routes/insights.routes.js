@@ -2,10 +2,10 @@ const router = require("express").Router();
 const Insights = require("../models/insights.model");
 const Company = require("../models/company.model");
 const { ObjectId } = require("mongoose");
-const { isSameUser } = require("../middlewares/route-guard");
+const { isSameUser, isLoggedIn } = require("../middlewares/route-guard");
 
 /* GET  salaries page */
-router.get("/", async (req, res, next) => {
+router.get("/", isLoggedIn, async (req, res, next) => {
   const allSalaries = await Insights.find().populate("company");
   // console.log(allSalaries);
 
@@ -20,7 +20,7 @@ router.get("/", async (req, res, next) => {
 });
 
 //Get company page
-router.get("/company", async (req, res, next) => {
+router.get("/company", isLoggedIn, async (req, res, next) => {
   try {
     // console.log(req.query);
     let oneCompany = null;
@@ -64,7 +64,7 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/userInfos", async (req, res, next) => {
+router.get("/userInfos", isLoggedIn, async (req, res, next) => {
   try {
     // console.log(req.session.currentUser);
     let user = await Insights.find({
@@ -77,11 +77,11 @@ router.get("/userInfos", async (req, res, next) => {
   }
 });
 
-router.delete("/userInfos/:id", async (req, res, next) => {
+router.delete("/userInfos/:id", isLoggedIn, async (req, res, next) => {
   try {
     const id = req.params.id;
 
-    const user = await Insights.findOne({ _id: id });
+    const user = await Insights.findOne(id);
     if (!user) {
       return res.status(400).send("Invalid review id");
     }
@@ -112,7 +112,7 @@ router.get("/:id/edit", isSameUser, async (req, res, next) => {
 //  * ? This route should update a insight(user) and respond with
 //  * ? the updated insight(user)
 //  */
-router.post("/:id/edit", async (req, res, next) => {
+router.post("/:id/edit", isLoggedIn, async (req, res, next) => {
   const id = req.params.id;
   const insightToUpdate = req.body;
   console.log(insightToUpdate);
