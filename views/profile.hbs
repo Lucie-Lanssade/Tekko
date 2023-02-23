@@ -86,6 +86,7 @@
         </form>
         </div>
     
+    
 
         {{!-- <div class="deleteBtn">
             <h2>Delete review</h2>
@@ -95,6 +96,9 @@
         </div> --}}
     </div>
 
+<div>
+            <h4 id="missed">Missed something? Update or delete your reviews here!</h4>
+        </div>
     <div class="userContainer">
         <div class="user-info">
             <div class="userCompany"></div>
@@ -109,8 +113,11 @@
          
         </div>
     </div>
+
+    
 </div>
     <template id="template">
+        
         <div class="user-info">
             <div class="userCompany">Company: <span></span></div>
             <div class="userLocation">Location: <span></span></div>
@@ -121,7 +128,9 @@
             <div class="userXp">Number field exp: <span></span></div>
             <div class="jobXp">Number current job exp: <span></span></div>
             <div class="userComment">Comment:<span></span></div>
+            <div class="reviewBtns">
             <button class="btn-update"><a class="UpdateBtn" href="">Update</a></button>
             <button><a class="btnDelete" href="">Delete</a></button>
+            </div>
         </div>
     </template>

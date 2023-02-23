@@ -28,23 +28,22 @@ h1 {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap: 3rem
+    gap: 2rem
 }
 
 .companies {
     background-color: #f1f1f1ea;
     border-radius: 8px;
 
-    width: 30rem;
+    width: 20rem;
 }
 
 ul {
-    padding: 2rem;
+    padding: 1rem;
 }
 
 li {
     list-style-type: none;
-    padding-bottom: 0.5rem;
 }
 
 span {
