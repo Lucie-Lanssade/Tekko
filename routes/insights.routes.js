@@ -2,6 +2,7 @@ const router = require("express").Router();
 const Insights = require("../models/insights.model");
 const Company = require("../models/company.model");
 const { ObjectId } = require("mongoose");
+const { isSameUser } = require("../middlewares/route-guard");
 
 /* GET  salaries page */
 router.get("/", async (req, res, next) => {
@@ -76,33 +77,6 @@ router.get("/userInfos", async (req, res, next) => {
   }
 });
 
-//  * ? This route should update a insight(user) and respond with
-//  * ? the updated insight(user)
-//  */
-router.patch("/userInfos/:id", async (req, res, next) => {
-  const id = req.params.id;
-  const insightToUpdate = req.body;
-  console.log(insightToUpdate);
-  try {
-    if (!insightToUpdate) {
-      return res.json({ message: `review not found` });
-    } else {
-      const updateInsight = await Insights.findByIdAndUpdate(
-        id,
-        insightToUpdate,
-        {
-          new: true,
-        }
-        //ne marche pas pour le titre
-      ).populate("company");
-      const companyName = updateInsight.company.name;
-      res.json({ message: `You're updating your review` }, { companyName });
-    }
-  } catch (error) {
-    next(error);
-  }
-});
-
 router.delete("/userInfos/:id", async (req, res, next) => {
   try {
     const id = req.params.id;
@@ -118,6 +92,57 @@ router.delete("/userInfos/:id", async (req, res, next) => {
       message: "Character deleted successfully",
       deletedReview,
     });
+  } catch (error) {
+    next(error);
+  }
+});
+
+//update get
+router.get("/:id/edit", isSameUser, async (req, res, next) => {
+  try {
+    const id = req.params.id;
+    let insightUpdate = await Insights.findById(id).populate("company");
+    console.log(insightUpdate);
+    res.render("updateReview", { insightUpdate });
+  } catch (error) {
+    next(error);
+  }
+});
+
+//  * ? This route should update a insight(user) and respond with
+//  * ? the updated insight(user)
+//  */
+router.post("/:id/edit", async (req, res, next) => {
+  const id = req.params.id;
+  const insightToUpdate = req.body;
+  console.log(insightToUpdate);
+  try {
+    if (!insightToUpdate) {
+      return res.json({ message: `review not found` });
+    } else {
+      const updateInsight = await Insights.findByIdAndUpdate(
+        id,
+        insightToUpdate,
+        {
+          new: true,
+        }
+        //ne marche pas pour le titre
+      );
+      console.log(updateInsight);
+      res.redirect("/profile");
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+//delete get
+router.get("/:id/delete", isSameUser, async (req, res, next) => {
+  const id = req.params.id;
+  try {
+    const deleteReview = await Insights.findByIdAndDelete(id);
+    console.log(deleteReview);
+    res.redirect("/profile");
   } catch (error) {
     next(error);
   }

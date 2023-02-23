@@ -1,0 +1,73 @@
+<div class="form-update">
+    <h2>Update review</h2>
+    {{#with insightUpdate}}
+    <form action="/insights/{{_id}}/edit" id="editform" method="POST">
+    
+        <div>
+            {{!-- <label for='companyEdit'>Company : </label>
+            <input list="companyCreated" required id="companyEdit" name='companyEdit' placeholder='Company' />
+            <datalist id="companyCreated">
+                {{#each allCompanies}}
+                <option value="{{name}}">
+                    {{/each}}
+            </datalist> --}}
+            <p>{{company.name}}</p>
+    
+        </div>
+        <div>
+            <label for='title'>Job title : </label>
+            <input type='text' required id='titleInput' name='title' placeholder='Title' value="{{title}}"/>
+        </div>
+        <div>
+            <label for='locationEdit'>Location : </label>
+            <input type='text' id="locationEdit" required name='location' placeholder='Location' value="{{location}}" />
+        </div>
+        <div>
+            <label for='compensationEdit'>Compensation : </label>
+            <input type='text' id="compensationEdit" required name='compensation' placeholder='compensation' value="{{compensation}}" />
+        </div>
+        <div>
+            <label for='levelEdit'>Level : </label>
+            <select name="level" id="levelEdit" required value="{{level}}">
+                <option value="Junior">Junior</option>
+                <option value="Intermediate">intermediate</option>
+                <option value="Senior">senior</option>
+            </select>
+        </div>
+        <div>
+            <label for='companyXpEdit'>Number company exp : </label>
+            <input type='text' id="companyXpEdit" required name='company_xp'
+                placeholder='number of your experience in this company' value="{{company_xp}}"/>
+        </div>
+        <div>
+            <label for='noteEdit'>Note : </label>
+            <select name="company_note" id="noteEdit" required value="{{company_note}}">
+                <option value="0">0</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select>
+    
+        </div>
+        <div>
+            <label for='totalXpEdit'> Number field exp : </label>
+            <input type='text' id="totalXpEdit" required name='total_xp'
+                placeholder='number of your experience in this field' value="{{total_xp}}"/>
+        </div>
+        <div>
+            <label for='companyReviewEdit'> Comment : </label>
+            <input type='text' required id="companyReviewEdit" name='company_review' placeholder='Comment' value="{{company_review}}" />
+        </div>
+    
+        <button id="editBtn" type="submit">Update review</button>
+    
+    </form>
+    {{/with}}
+</div>
