@@ -21,8 +21,9 @@ dark-blue: #16123F */
 /* Navbar styling */
 
 nav {
-    height: 4.2rem;
+    height: 4.6rem;
     background-color: #FFE26A;
+    box-shadow: 0px 5px 5px 0px rgba(64, 64, 64, 0.75);
     display: flex;
     flex-direction: row;
 
