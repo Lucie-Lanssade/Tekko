@@ -95,6 +95,7 @@ nav {
     box-shadow: 0px 4px 0px 0px rgba(117, 201, 183, 0.75);
     border-radius: 8px;
     margin-right: 1rem;
+
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -120,4 +121,5 @@ nav {
     margin-right: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
+
 }
