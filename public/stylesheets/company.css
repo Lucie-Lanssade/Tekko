@@ -62,13 +62,11 @@ p span:nth-child(1) {
     text-decoration: none;
     padding: 0.3rem 1.5rem;
     background-color: white;
-    box-shadow: 0px 4px 0px 0px #FFE26A;
-    border-top-right-radius: 10px;
-    border-bottom-right-radius: 10px;
+    border-radius: 10px;
     align-self: center;
     cursor: pointer;
     transition: all 0.2s ease;
-    height: 35px;
+    height: 25px;
 }
 
 #btnSearchCompany:hover {
@@ -77,16 +75,11 @@ p span:nth-child(1) {
 }
 
 select {
-    border-top-left-radius: 10px;
-    border-bottom-left-radius: 10px;
-    height: 45px;
+    border-radius: 10px;
+    height: 42px;
     border: none;
     padding: 0 1em 0 0;
-    margin: 0;
-    font-family: inherit;
-    font-size: inherit;
-    cursor: inherit;
-    line-height: inherit;
+
 }
 
 li span {

@@ -84,7 +84,7 @@ router.post("/login", isLoggedOut, async (req, res, next) => {
     const matchingPass = await bcrypt.compare(password, foundUser.password);
     if (!matchingPass) {
       return res.render("auth/login", {
-        errorMessage: "wrong password. Please try again",
+        errorMessage: "Wrong password. Please try again",
         stylesheets: ["auth"],
       });
     }

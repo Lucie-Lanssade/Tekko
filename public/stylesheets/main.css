@@ -59,6 +59,12 @@ body {
     position: absolute;
     bottom: 10rem;
     right: 78rem;
+    transition: all 0.2s ease;
+}
+
+#signBtn:hover {
+    transition: all 0.2s ease;
+    transform: scale(1.1);
 }
 
 h1 {

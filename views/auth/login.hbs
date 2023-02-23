@@ -1,5 +1,5 @@
 <h1>Login Session</h1>
-<h3>discover the latest trends and insights on web development salaries with our
+<h3>Discover the latest trends and insights on web development salaries with our
   easy-to-use platform.</h3>
 {{#if errorMessage}}
   <p class='error'>{{errorMessage}}</p>
@@ -7,20 +7,18 @@
 
 <form action='/auth/login' method='post'>
   <div>
-    <label for='name'>Username : </label>
-    <input type='text' id='name' name='name' placeholder='John Smith' required />
+    <input type='text' id='name' name='name' placeholder='Username' required />
   </div>
   <div>
-    <label for='password'>Password: </label>
     <input
       type='password'
       id='password'
       name='password'
-      placeholder='**********'
+      placeholder='Password'
       required
     />
   </div>
   <button type='submit'>Login</button>
-  <p>Need an account? <a href='/auth/signup'>Sign up here!</a></p>
+  <p id="quoteLogin">Need an account? <a href='/auth/signup'>Sign up here!</a></p>
 
 </form>
