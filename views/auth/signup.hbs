@@ -3,23 +3,31 @@
 {{/if}}
 <h1>Sign up now</h1>
 <h3>take the first step towards making informed decisions about your career.</h3>
-<form action='/auth/signup' method='post'>
+<div class='signupFormContainer'>
+  <form action='/auth/signup' method='post' id='signupForm'>
 
-  <div class='inputForm'>
-    <label for='name'>username: </label>
-    <input type='text' name='name' placeholder='Username' required/>
-  </div>
-  <div class='inputForm'>
-    <label for='email'>email: </label>
-    <input type='text' id='email' name='email' placeholder='E-Mail' required />
-  </div>
-  <div class='inputForm'>
-    <label for='password'>password: </label>
-    <input type='password' required name='password' placeholder='*********' />
-  </div>
+    <div class='inputForm'>
 
-  <button type='submit'>create my account</button>
+      <input type='text' name='name' placeholder='Username' required />
+    </div>
+    <div class='inputForm'>
 
-  <p>Already have an account? <a href='/auth/login'>login</a></p>
+      <input
+        type='text'
+        id='email'
+        name='email'
+        placeholder='E-Mail'
+        required
+      />
+    </div>
+    <div class='inputForm'>
 
-</form>
+      <input type='password' required name='password' placeholder='password' />
+    </div>
+
+    <button type='submit'>create my account</button>
+
+    <p>Already have an account? <a href='/auth/login'>login</a></p>
+
+  </form>
+</div>

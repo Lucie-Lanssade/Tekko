@@ -67,3 +67,52 @@ a {
     text-align: center;
     color: red;
 }
+
+
+/* 
+#signupForm {
+
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: center;
+    margin: 3rem auto 3rem auto;
+    gap: 2rem;
+    background-color: #C7DDCC;
+    border-radius: 10px;
+    max-width: 25rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+
+} */
+
+
+.signupFormContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 3rem auto 3rem auto;
+    gap: 2rem;
+    background-color: #C7DDCC;
+    border-radius: 10px;
+    max-width: 25rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+}
+
+#signupForm input {
+    width: 15rem;
+
+}
+
+
+#signupForm div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+h3 {
+    color: white;
+}

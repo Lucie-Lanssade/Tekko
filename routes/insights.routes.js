@@ -1,26 +1,26 @@
-const router = require("express").Router();
-const Insights = require("../models/insights.model");
-const Company = require("../models/company.model");
-const { ObjectId } = require("mongoose");
-const { isSameUser, isLoggedIn } = require("../middlewares/route-guard");
+const router = require('express').Router();
+const Insights = require('../models/insights.model');
+const Company = require('../models/company.model');
+const { ObjectId } = require('mongoose');
+const { isSameUser, isLoggedIn } = require('../middlewares/route-guard');
 
 /* GET  salaries page */
-router.get("/", isLoggedIn, async (req, res, next) => {
-  const allSalaries = await Insights.find().populate("company");
+router.get('/', isLoggedIn, async (req, res, next) => {
+  const allSalaries = await Insights.find().populate('company');
   // console.log(allSalaries);
 
   const companyName = await Insights.find({ name: Company.name });
   // console.log(companyName);
 
-  res.render("salaries", {
+  res.render('salaries', {
     allSalaries,
     companyName,
-    stylesheets: { stylesheets: ["salaries"] },
+    stylesheets: { stylesheets: ['salaries'] },
   });
 });
 
 //Get company page
-router.get("/company", isLoggedIn, async (req, res, next) => {
+router.get('/company', isLoggedIn, async (req, res, next) => {
   try {
     // console.log(req.query);
     let oneCompany = null;
@@ -37,19 +37,19 @@ router.get("/company", isLoggedIn, async (req, res, next) => {
         }, 0) / reviews.length;
     }
 
-    res.render("company", {
+    res.render('company', {
       allCompanies,
       oneCompany,
       reviews,
       globalNote,
-      stylesheets: { stylesheets: ["company"] },
+      stylesheets: { stylesheets: ['company'] },
     });
   } catch (error) {
     next(error);
   }
 });
 
-router.post("/", async (req, res, next) => {
+router.post('/', async (req, res, next) => {
   try {
     const reviewToCreate = { ...req.body };
     // console.log(reviewToCreate);
@@ -70,12 +70,12 @@ router.post("/", async (req, res, next) => {
   }
 });
 
-router.get("/userInfos", isLoggedIn, async (req, res, next) => {
+router.get('/userInfos', isLoggedIn, async (req, res, next) => {
   try {
     // console.log(req.session.currentUser);
     let user = await Insights.find({
       creator: req.session.currentUser._id,
-    }).populate("company");
+    }).populate('company');
     res.status(200).json(user);
     // console.log(user);
   } catch (error) {
@@ -83,19 +83,19 @@ router.get("/userInfos", isLoggedIn, async (req, res, next) => {
   }
 });
 
-router.delete("/userInfos/:id", isLoggedIn, async (req, res, next) => {
+router.delete('/userInfos/:id', isLoggedIn, async (req, res, next) => {
   try {
     const id = req.params.id;
 
     const user = await Insights.findOne(id);
     if (!user) {
-      return res.status(400).send("Invalid review id");
+      return res.status(400).send('Invalid review id');
     }
 
     const deletedReview = await Insights.findByIdAndDelete(id);
 
     res.json({
-      message: "Character deleted successfully",
+      message: 'Character deleted successfully',
       deletedReview,
     });
   } catch (error) {
@@ -104,12 +104,15 @@ router.delete("/userInfos/:id", isLoggedIn, async (req, res, next) => {
 });
 
 //update get
-router.get("/:id/edit", isSameUser, async (req, res, next) => {
+router.get('/:id/edit', isSameUser, async (req, res, next) => {
   try {
     const id = req.params.id;
-    let insightUpdate = await Insights.findById(id).populate("company");
+    let insightUpdate = await Insights.findById(id).populate('company');
     console.log(insightUpdate);
-    res.render("updateReview", { insightUpdate });
+    res.render('updateReview', {
+      insightUpdate,
+      stylesheets: { stylesheets: ['updateReview'] },
+    });
   } catch (error) {
     next(error);
   }
@@ -118,7 +121,7 @@ router.get("/:id/edit", isSameUser, async (req, res, next) => {
 //  * ? This route should update a insight(user) and respond with
 //  * ? the updated insight(user)
 //  */
-router.post("/:id/edit", isLoggedIn, async (req, res, next) => {
+router.post('/:id/edit', isLoggedIn, async (req, res, next) => {
   const id = req.params.id;
   const insightToUpdate = req.body;
   console.log(insightToUpdate);
@@ -135,7 +138,7 @@ router.post("/:id/edit", isLoggedIn, async (req, res, next) => {
         //ne marche pas pour le titre
       );
       console.log(updateInsight);
-      res.redirect("/profile");
+      res.redirect('/profile');
     }
   } catch (error) {
     next(error);
@@ -143,12 +146,12 @@ router.post("/:id/edit", isLoggedIn, async (req, res, next) => {
 });
 
 //delete get
-router.get("/:id/delete", isSameUser, async (req, res, next) => {
+router.get('/:id/delete', isSameUser, async (req, res, next) => {
   const id = req.params.id;
   try {
     const deleteReview = await Insights.findByIdAndDelete(id);
     console.log(deleteReview);
-    res.redirect("/profile");
+    res.redirect('/profile');
   } catch (error) {
     next(error);
   }
