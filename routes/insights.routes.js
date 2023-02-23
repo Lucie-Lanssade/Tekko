@@ -1,26 +1,29 @@
-const router = require('express').Router();
-const Insights = require('../models/insights.model');
-const Company = require('../models/company.model');
+const router = require("express").Router();
+const Insights = require("../models/insights.model");
+const Company = require("../models/company.model");
+const { ObjectId } = require("mongoose");
 
 /* GET  salaries page */
-router.get('/', async (req, res, next) => {
-  const allSalaries = await Insights.find().populate('company');
-  console.log(allSalaries);
+router.get("/", async (req, res, next) => {
+  const allSalaries = await Insights.find().populate("company");
+  // console.log(allSalaries);
 
   const companyName = await Insights.find({ name: Company.name });
-  console.log(companyName);
+  // console.log(companyName);
+
 
   res.render('salaries', {
     allSalaries,
     companyName,
     stylesheets: { stylesheets: ['salaries'] },
   });
-});
+
+
 
 //Get company page
-router.get('/company', async (req, res, next) => {
+router.get("/company", async (req, res, next) => {
   try {
-    console.log(req.query);
+    // console.log(req.query);
     let oneCompany = null;
     let reviews = null;
     let globalNote = null;
@@ -35,17 +38,18 @@ router.get('/company', async (req, res, next) => {
         }, 0) / reviews.length;
     }
 
-    res.render('company', { allCompanies, oneCompany, reviews, globalNote });
+    res.render("company", { allCompanies, oneCompany, reviews, globalNote });
   } catch (error) {
     next(error);
   }
 });
 
-//Post route for profile page
-router.post('/', async (req, res, next) => {
+
+router.post("/", async (req, res, next) => {
+
   try {
     const reviewToCreate = { ...req.body };
-    console.log(reviewToCreate);
+    // console.log(reviewToCreate);
 
     let company = await Company.findOne({ name: reviewToCreate.company });
     if (!company) {
@@ -54,9 +58,70 @@ router.post('/', async (req, res, next) => {
     const insight = await Insights.create({
       ...reviewToCreate,
       company: company._id,
+      creator: req.session.currentUser._id,
     });
-    console.log(insight);
+    // console.log("Insight: ", insight);
     res.status(200).json(insight);
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.get("/userInfos", async (req, res, next) => {
+  try {
+    // console.log(req.session.currentUser);
+    let user = await Insights.find({
+      creator: req.session.currentUser._id,
+    }).populate("company");
+    res.status(200).json(user);
+    // console.log(user);
+  } catch (error) {
+    next(error);
+  }
+});
+
+//  * ? This route should update a insight(user) and respond with
+//  * ? the updated insight(user)
+//  */
+router.patch("/userInfos/:id", async (req, res, next) => {
+  const id = req.params.id;
+  const insightToUpdate = req.body;
+  console.log(insightToUpdate);
+  try {
+    if (!insightToUpdate) {
+      return res.json({ message: `review not found` });
+    } else {
+      const updateInsight = await Insights.findByIdAndUpdate(
+        id,
+        insightToUpdate,
+        {
+          new: true,
+        }
+        //ne marche pas pour le titre
+      ).populate("company");
+      const companyName = updateInsight.company.name;
+      res.json({ message: `You're updating your review` }, { companyName });
+    }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/userInfos/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const user = await Insights.findOne({ _id: id });
+    if (!user) {
+      return res.status(400).send("Invalid review id");
+    }
+
+    const deletedReview = await Insights.findByIdAndDelete(id);
+
+    res.json({
+      message: "Character deleted successfully",
+      deletedReview,
+    });
   } catch (error) {
     next(error);
   }

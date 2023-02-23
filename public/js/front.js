@@ -1,20 +1,38 @@
+//create
 const userContainer = document.querySelector(".userContainer");
 const companyInput = document.getElementById("company");
 const titleInput = document.getElementById("title");
-const locationInput = document.getElementByid("location");
+const locationInput = document.getElementById("location");
 const compensationInput = document.getElementById("compensation");
 const levelInput = document.getElementById("level");
 const companyXpInput = document.getElementById("companyXp");
 const noteInput = document.getElementById("note");
 const totalXpInput = document.getElementById("totalXp");
 const companyReviewInput = document.getElementById("companyReview");
+//update
+const idEdit = document.getElementById("idEdit");
+const companyEdit = document.getElementById("companyEdit");
+const titleEdit = document.getElementById("titleEdit");
+const locationEdit = document.getElementById("locationEdit");
+const compensationEdit = document.getElementById("compensationEdit");
+const levelEdit = document.getElementById("levelEdit");
+const companyXpEdit = document.getElementById("companyXpEdit");
+const noteEdit = document.getElementById("noteEdit");
+const totalXpEdit = document.getElementById("totalXpEdit");
+const companyReviewEdit = document.getElementById("companyReviewEdit");
+const idDelete = document.getElementById("idDelete");
 
-const myUrl = "http://127.0.0.1:5005/profile";
+const myUrl = "http://127.0.0.1:5005/insights";
 
-function createUser(element) {
+//permet de nous renvoyer les cookies de l'utilisateur
+axios.defaults.withCredentials = true;
+
+function displayUser(element) {
   const cloneUser = template.content.cloneNode(true);
   //recuperer le nom de la compagnie pose probleme car on recupere que l'id ... trouver le moyen d'attendre l'objet de company
-  cloneUser.querySelector(".userCompany span").textContent = element.company;
+  cloneUser.querySelector(".idInput span").textContent = element._id;
+  cloneUser.querySelector(".userCompany span").textContent =
+    element.company.name;
   cloneUser.querySelector(".userLocation span").textContent = element.location;
   cloneUser.querySelector(".userJob span").textContent = element.title;
   cloneUser.querySelector(".userCompensation span").textContent =
@@ -30,14 +48,17 @@ function createUser(element) {
 
 async function displayAll() {
   try {
-    const { data } = await axios.get(myUrl);
-    // console.log(data);
-    for (const user of data) {
-      //a voir si ca marche ou pas
-      if (!user) {
-        return (userContainer.textContent = "Oups... no result... try again");
+    const { data } = await axios.get(myUrl + "/userInfos");
+    userContainer.innerHTML = null;
+
+    if (data) {
+      for (const user of data) {
+        //a voir si ca marche ou pas
+        // console.log(user);
+        displayUser(user);
       }
-      createUser(user);
+    } else {
+      userContainer.textContent = "Oups... no result...";
     }
   } catch (error) {
     console.log(error);
@@ -69,14 +90,67 @@ async function createUser(event) {
   };
   try {
     const { data } = await axios.post(myUrl, userCreate);
-    console.log("created");
-    if (data) {
-      createUser(data);
-      displayAll();
-    }
+    console.log(data);
+    displayAll();
   } catch (error) {
     console.log(error);
   }
 }
 
-document.getElementById("createBtn").addEventListener("submit", createUser);
+// UPDATE REVIEW
+
+async function updateReview(event) {
+  event.preventDefault();
+  const id = idEdit.value;
+  // const companyName = companyEdit.value;
+  // le populate pose probleme ici je narrive pas a acceder la name de company
+  const title = titleEdit.value;
+  const location = locationEdit.value;
+  const compensation = compensationEdit.value;
+  const level = levelEdit.value;
+  const company_xp = companyXpEdit.value;
+  const company_note = noteEdit.value;
+  const total_xp = totalXpEdit.value;
+  const company_review = companyReviewEdit.value;
+  const reviewEdit = {
+    id,
+    // companyName,
+    title,
+    location,
+    compensation,
+    level,
+    company_xp,
+    company_note,
+    total_xp,
+    company_review,
+  };
+
+  try {
+    const review = await axios.patch(myUrl + "/userInfos/" + id, reviewEdit);
+    console.log(review);
+    await displayAll();
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+//DELETE
+document
+  .getElementById("delete-one")
+  .addEventListener("click", async function () {
+    let idInput = idDelete.value;
+    try {
+      const deleteCharacter = await axios.delete(
+        myUrl + "/userInfos/" + `${idInput}`
+      );
+      console.log(deleteCharacter, "has been deleted");
+      displayAll();
+    } catch (error) {
+      console.log(error);
+    }
+  });
+
+displayAll();
+document.querySelector("#createForm").addEventListener("submit", createUser);
+
+document.getElementById("editform").addEventListener("submit", updateReview);

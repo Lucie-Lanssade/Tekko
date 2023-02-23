@@ -5,17 +5,17 @@
       <a href='/'><img src='/images/Tekko-logo.png' alt='' /></a>
       <a href='/insights/company'>companies reviews</a>
       <a href='/insights'>salaries insights</a>
+      
     </div>
     <div class='logs'>
       {{#if currentUser}}
 
-        <form action='/profile' method='POST'>
-          <button id='profile'>Profile</button>
-        </form>
+      <a id="profileBtn" href='/profile'>Profile</a>
+
         <form action='/auth/logout' method='POST'>
           <button id='logout'>Logout</button>
         </form>
-
+      
       {{else}}
 
         <a id='navLogin' href='/auth/login'>Login</a>

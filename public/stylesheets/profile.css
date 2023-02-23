@@ -1,0 +1,30 @@
+.profileContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+}
+
+.formContainer {
+    display: flex;
+    margin: 20px;
+}
+
+.form-create,
+.form-update,
+.deleteBtn {
+    margin: 10px;
+}
+
+#createForm div,
+#editform div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.user-info {
+    border: 1px solid red;
+    padding: 10px;
+}
