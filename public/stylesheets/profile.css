@@ -16,3 +16,15 @@
 .deleteBtn {
     margin: 10px;
 }
+
+#createForm div,
+#editform div {
+    margin-top: 10px;
+    margin-bottom: 10px;
+
+}
+
+.user-info {
+    border: 1px solid red;
+    padding: 10px;
+}
