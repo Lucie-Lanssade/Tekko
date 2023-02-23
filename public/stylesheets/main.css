@@ -23,7 +23,6 @@ body {
 
 .images {
     position: relative;
-
     max-width: 100%;
     height: 100%;
 }
@@ -66,4 +65,37 @@ h1 {
     color: white;
     text-align: center;
     margin-top: 3rem;
+}
+
+
+@media screen and (max-width : 1500px) {
+    #review1 {
+        width: 20rem;
+        bottom: 20rem;
+        right: 10rem;
+        filter: opacity(0.8)
+    }
+
+    #review2 {
+        width: 20rem;
+        height: auto;
+        position: absolute;
+        bottom: 12rem;
+        right: 20rem;
+    }
+
+    .title h1 {
+        font-size: 2.6rem;
+        max-width: 50rem;
+        margin: 5rem auto 0 auto;
+        position: absolute;
+        top: 100px;
+        left: 90px;
+        width: 600px;
+    }
+
+    #signBtn {
+        bottom: 10rem;
+        right: 60rem;
+    }
 }
