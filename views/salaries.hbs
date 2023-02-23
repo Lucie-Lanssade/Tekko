@@ -1,10 +1,8 @@
 <h1>Curious about how much your peers make?</h1>
 
-
 <h4>Explore salary ranges and compare them across locations and levels of
   experience. Whether you're just starting out in the field or looking for
   advancement, we can help you make better decisions.</h4>
-
 
 <section class='company-container'>
   {{#each allSalaries}}
@@ -12,13 +10,13 @@
     <article class='companies animate__animated animate__fadeIn'>
 
       <ul>
-        <li> <span>job title: </span> {{this.title}}</li>
-        <li><span>company: </span>{{this.company.name}}</li>
-        <li><span>annual compensation: </span>{{this.compensation}}€</li>
-        <li><span>city: </span>{{this.location}}</li>
-        <li><span>level: </span>{{this.level}}</li>
-        <li><span>seniority: </span>{{this.company_xp}}</li>
-        <li><span>years of experience: </span>{{this.total_xp}}</li>
+        <li> <span>Job title: </span> {{this.title}}</li>
+        <li><span>Company: </span>{{this.company.name}}</li>
+        <li><span>Annual compensation: </span>{{this.compensation}}€</li>
+        <li><span>City: </span>{{this.location}}</li>
+        <li><span>Level: </span>{{this.level}}</li>
+        <li><span>Seniority: </span>{{this.company_xp}}years</li>
+        <li><span>Years of experience: </span>{{this.total_xp}}years</li>
       </ul>
     </article>
 

@@ -17,7 +17,7 @@ form {
 form input {
     border: none;
     border-radius: 8px;
-    height: 1.6rem;
+    padding: 3rem;
     text-align: center;
 
 }
@@ -37,6 +37,14 @@ form button {
     margin-top: 2rem;
     align-self: center;
 }
+
+
+
+
+
+
+
+
 
 h1,
 h3 {

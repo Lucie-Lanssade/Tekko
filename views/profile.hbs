@@ -4,9 +4,7 @@
 </div>
 
 <div class="textProfile">
-    <p>"Remember, filling out <b>an anonymous salary form</b> is not only a confidential way to contribute to your community, but also
-a small act of solidarity towards a more transparent and equitable society where everyone's contributions are recognized
-and valued."</p>
+    <p>Did you ever work for a company and wish you could have shared your experiences with others? Now you can! create a review,share your insights and help others who may be considering working there.Give others a better understanding of what they can expect. By contributing to our anonymous review system, you'll be helping to create a more transparent job market and empowering others to make informed decisions about their careers. So, why not take a few minutes to share your experience and help others?</p>
 </div>
 
 {{#if errorMessage}}
@@ -17,10 +15,10 @@ and valued."</p>
     <div class="formContainer">
        
         <div class="form-create">
-            <h2>Create review</h2>
+            <h2>Create a review</h2>
             <form  id="createForm">
             <div>
-                <label for='company'>Your Company : </label>
+         
                 <input list="companyCreated" required id="company" name='company' placeholder='Company' />
                 <datalist id="companyCreated">
                     {{#each allCompanies}}
@@ -30,33 +28,35 @@ and valued."</p>
 
             </div>
             <div>
-                <label for='title'>Job title : </label>
+               
                 <input type='text' required id='title' name='title' placeholder='Job Title' />
             </div>
             <div>
-                <label for='location'>Location : </label>
+               
                 <input type='text' id="location" required name='location' placeholder='Location' />
             </div>
             <div>
-                <label for='compensation'>Compensation : </label>
+               
                 <input type='text' id="compensation" required name='compensation' placeholder='compensation' />
             </div>
             <div>
-                <label for='level'>Level : </label>
+               
                 <select name="level" id="level" required>
+                    <option value=""selected disabled >Level:</option>
                     <option value="Junior">Junior</option>
                     <option value="Intermediate">intermediate</option>
                     <option value="Senior">senior</option>
                 </select>
             </div>
             <div>
-                <label for='company_xp'>Company experience: </label>
+               
                 <input type='text' id="companyXp" required name='company_xp'
                     placeholder='Year(s)' />
             </div>
             <div>
-                <label for='company_note'>Note of your company : </label>
+               
                 <select name="company_note" id="note" required>
+                    <option value="" selected disabled>Rate your company :</option>
                     <option value="0">0</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
@@ -72,16 +72,16 @@ and valued."</p>
 
             </div>
             <div>
-                <label for='total_xp'> Number field exp : </label>
+                
                 <input type='text' id="totalXp" required name='total_xp'
-                    placeholder='number of your experience in this field' />
+                    placeholder='years of experience, ex:2' />
             </div>
             <div>
-                <label for='company_review'> Comment : </label>
-                <input type='text' required id="companyReview" name='company_review' placeholder='Comment' />
+               
+                <input type='text' required id="companyReview" name='company_review' placeholder='Anything to add? Write it here!' />
             </div>
 
-            <button id="createBtn" type="submit">Create review</button>
+            <button id="createBtn" type="submit">Create my review</button>
 
         </form>
         </div>
