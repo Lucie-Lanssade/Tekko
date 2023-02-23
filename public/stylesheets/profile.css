@@ -9,6 +9,7 @@ body {
 
 
 
+/* FORM AND H1,H4 STYLES */
 
 .profileContainer {
     display: flex;
@@ -95,10 +96,7 @@ p {
     max-width: 70rem;
 }
 
-.user-info {
-    border: 1px solid red;
-    padding: 10px;
-}
+
 
 #createBtn {
     all: unset;
@@ -117,4 +115,66 @@ p {
 #createBtn:hover {
     transition: all 0.2s ease;
     transform: scale(1.1);
+}
+
+
+
+/* CREATED REVIEWS STYLE */
+
+#missed {
+    margin: 4rem auto 5rem auto;
+    font-size: 2rem;
+}
+
+.userContainer {
+
+    display: flex;
+    flex-wrap: wrap;
+
+
+    gap: 2rem;
+}
+
+
+.user-info {
+    width: 30rem;
+    padding: 2rem;
+
+    background-color: #f1f1f1ea;
+    font-weight: 600;
+
+
+    border-radius: 8px;
+}
+
+.user-info span {
+    font-weight: 400;
+}
+
+.user-info button {
+    /* margin-right: 2rem; */
+    all: unset;
+    font-weight: 600;
+    color: #16123F;
+    text-decoration: none;
+    padding: 0.3rem 1.5rem;
+    background-color: white;
+    box-shadow: 0px 4px 0px 0px rgba(117, 201, 183, 0.75);
+    border-radius: 8px;
+    margin-right: 1rem;
+    cursor: pointer;
+    transition: all 0.2s ease;
+
+}
+
+.user-info a {
+    text-decoration: none;
+}
+
+
+.reviewBtns {
+    margin-top: 2rem;
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
 }
