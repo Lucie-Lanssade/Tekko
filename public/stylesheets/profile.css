@@ -8,23 +8,78 @@
 
 .formContainer {
     display: flex;
-    margin: 20px;
+    justify-content: center;
+    text-align: center;
+
 }
 
-.form-create,
-.form-update,
-.deleteBtn {
-    margin: 10px;
+.form-create h2 {
+    text-align: center;
+}
+
+.form-create {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto 3rem auto;
+    gap: 2rem;
+    background-color: #C7DDCC;
+    border-radius: 10px;
+    width: 30rem;
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    text-align: center;
+}
+
+#companyReview[type="text"] {
+    width: 100%;
+    height: 100px;
+    white-space: pre-wrap;
 }
 
 #createForm div,
 #editform div {
     margin-top: 10px;
     margin-bottom: 10px;
+}
 
+#createForm input {
+    border: none;
+    border-radius: 8px;
+    height: 1.6rem;
+    text-align: center;
+}
+
+.titleProfile {
+    text-align: center;
+    margin: 48px;
+}
+
+.textProfile {
+    text-align: center;
 }
 
 .user-info {
     border: 1px solid red;
     padding: 10px;
+}
+
+#createBtn {
+    all: unset;
+    font-weight: 600;
+    color: #16123F;
+    text-decoration: none;
+    padding: 0.3rem 1.5rem;
+    background-color: white;
+    box-shadow: 0px 4px 0px 0px #FFE26A;
+    border-radius: 8px;
+    align-self: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#createBtn:hover {
+    transition: all 0.2s ease;
+    transform: scale(1.1);
 }
