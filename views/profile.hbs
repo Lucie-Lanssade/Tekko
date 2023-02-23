@@ -1,8 +1,14 @@
 {{!-- JL --}}
-<h1>Welcome {{currentUser.name}}</h1>
-<p>"Remember, filling out <b>an anonymous salary form</b> is not only a confidential way to contribute to your community, but also
+<div class="titleProfile">
+  <h1>Welcome {{currentUser.name}}</h1>  
+</div>
+
+<div class="textProfile">
+    <p>"Remember, filling out <b>an anonymous salary form</b> is not only a confidential way to contribute to your community, but also
 a small act of solidarity towards a more transparent and equitable society where everyone's contributions are recognized
 and valued."</p>
+</div>
+
 {{#if errorMessage}}
 <p class='error'>{{errorMessage}}</p>
 {{/if}}
@@ -14,7 +20,7 @@ and valued."</p>
             <h2>Create review</h2>
             <form  id="createForm">
             <div>
-                <label for='company'>Company : </label>
+                <label for='company'>Your Company : </label>
                 <input list="companyCreated" required id="company" name='company' placeholder='Company' />
                 <datalist id="companyCreated">
                     {{#each allCompanies}}
@@ -25,7 +31,7 @@ and valued."</p>
             </div>
             <div>
                 <label for='title'>Job title : </label>
-                <input type='text' required id='title' name='title' placeholder='Title' />
+                <input type='text' required id='title' name='title' placeholder='Job Title' />
             </div>
             <div>
                 <label for='location'>Location : </label>
@@ -44,12 +50,12 @@ and valued."</p>
                 </select>
             </div>
             <div>
-                <label for='company_xp'>Number company exp : </label>
+                <label for='company_xp'>Company experience: </label>
                 <input type='text' id="companyXp" required name='company_xp'
-                    placeholder='number of your experience in this company' />
+                    placeholder='Year(s)' />
             </div>
             <div>
-                <label for='company_note'>Note : </label>
+                <label for='company_note'>Note of your company : </label>
                 <select name="company_note" id="note" required>
                     <option value="0">0</option>
                     <option value="1">1</option>
