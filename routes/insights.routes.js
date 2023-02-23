@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const Insights = require("../models/insights.model");
 const Company = require("../models/company.model");
+const { ObjectId } = require("mongoose");
 
 /* GET  salaries page */
 router.get("/", async (req, res, next) => {
@@ -60,7 +61,7 @@ router.post("/", async (req, res, next) => {
 
 router.get("/userInfos", async (req, res, next) => {
   try {
-    console.log(req.session.currentUser);
+    // console.log(req.session.currentUser);
     let user = await Insights.find({
       creator: req.session.currentUser._id,
     }).populate("company");
@@ -77,16 +78,42 @@ router.get("/userInfos", async (req, res, next) => {
 router.patch("/userInfos/:id", async (req, res, next) => {
   const id = req.params.id;
   const insightToUpdate = req.body;
-
+  console.log(insightToUpdate);
   try {
     if (!insightToUpdate) {
       return res.json({ message: `review not found` });
     } else {
-      await Insights.findByIdAndUpdate(id, insightToUpdate, {
-        new: true,
-      });
-      res.json({ message: `You're updating your review` });
+      const updateInsight = await Insights.findByIdAndUpdate(
+        id,
+        insightToUpdate,
+        {
+          new: true,
+        }
+        //ne marche pas pour le titre
+      ).populate("company");
+      const companyName = updateInsight.company.name;
+      res.json({ message: `You're updating your review` }, { companyName });
     }
+  } catch (error) {
+    next(error);
+  }
+});
+
+router.delete("/userInfos/:id", async (req, res, next) => {
+  try {
+    const id = req.params.id;
+
+    const user = await Insights.findOne({ _id: id });
+    if (!user) {
+      return res.status(400).send("Invalid review id");
+    }
+
+    const deletedReview = await Insights.findByIdAndDelete(id);
+
+    res.json({
+      message: "Character deleted successfully",
+      deletedReview,
+    });
   } catch (error) {
     next(error);
   }

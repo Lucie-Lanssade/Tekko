@@ -1,6 +1,5 @@
 //create
 const userContainer = document.querySelector(".userContainer");
-const idInput = document.querySelector(".idInput");
 const companyInput = document.getElementById("company");
 const titleInput = document.getElementById("title");
 const locationInput = document.getElementById("location");
@@ -21,7 +20,7 @@ const companyXpEdit = document.getElementById("companyXpEdit");
 const noteEdit = document.getElementById("noteEdit");
 const totalXpEdit = document.getElementById("totalXpEdit");
 const companyReviewEdit = document.getElementById("companyReviewEdit");
-const editform = document.getElementById("editform");
+const idDelete = document.getElementById("idDelete");
 
 const myUrl = "http://127.0.0.1:5005/insights";
 
@@ -103,7 +102,8 @@ async function createUser(event) {
 async function updateReview(event) {
   event.preventDefault();
   const id = idEdit.value;
-  const company = companyEdit.value;
+  // const companyName = companyEdit.value;
+  // le populate pose probleme ici je narrive pas a acceder la name de company
   const title = titleEdit.value;
   const location = locationEdit.value;
   const compensation = compensationEdit.value;
@@ -114,7 +114,7 @@ async function updateReview(event) {
   const company_review = companyReviewEdit.value;
   const reviewEdit = {
     id,
-    company,
+    // companyName,
     title,
     location,
     compensation,
@@ -133,6 +133,22 @@ async function updateReview(event) {
     console.log(error);
   }
 }
+
+//DELETE
+document
+  .getElementById("delete-one")
+  .addEventListener("click", async function () {
+    let idInput = idDelete.value;
+    try {
+      const deleteCharacter = await axios.delete(
+        myUrl + "/userInfos/" + `${idInput}`
+      );
+      console.log(deleteCharacter, "has been deleted");
+      displayAll();
+    } catch (error) {
+      console.log(error);
+    }
+  });
 
 displayAll();
 document.querySelector("#createForm").addEventListener("submit", createUser);
