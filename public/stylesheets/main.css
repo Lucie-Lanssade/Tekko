@@ -20,3 +20,29 @@ body {
     top: 100px;
     left: 200px;
 }
+
+.images {
+    position: relative;
+    border: 1px solid red;
+    max-width: 100%;
+    height: 100%;
+}
+
+
+#review1 {
+    width: 25rem;
+    height: auto;
+    position: absolute;
+    bottom: 26rem;
+    right: 20rem;
+    filter: opacity(0.8)
+}
+
+#review2 {
+    width: 25rem;
+    height: auto;
+    position: absolute;
+    bottom: 16rem;
+    right: 30rem;
+
+}
