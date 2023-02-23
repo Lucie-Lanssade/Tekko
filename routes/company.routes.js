@@ -1,10 +1,8 @@
-const router = require('express').Router();
-const Insights = require('../models/insights.model');
-const mongoose = require('mongoose');
+const router = require("express").Router();
 
 /* GET  page */
-router.get('/', (req, res, next) => {
-  res.render('companies');
+router.get("/", (req, res, next) => {
+  res.render("companies");
 });
 
 module.exports = router;

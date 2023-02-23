@@ -1,12 +1,7 @@
 <h1>Browse all salaries</h1>
 
-<h4>Lorem ipsum dolor sit amet consectetur adipisicing elit. Sit laudantium
-  sequi amet dolorem adipisci quidem nihil explicabo asperiores, perspiciatis
-  illo blanditiis autem quis! Quasi, fuga accusantium. Molestiae magnam deleniti
-  blanditiis rerum velit nemo repudiandae id quos maiores minima. Nemo
-  voluptates voluptate consequuntur velit libero officiis qui reiciendis iste
-  cum, magni, fugiat cupiditate iusto ab quasi dolorum beatae aliquid ratione
-  repudiandae.</h4>
+<h4>Transparency in salary is not only a matter of fairness, but also a powerful tool for beginners to assess their worth,
+negotiate better compensation, and plan for their financial future.</h4>
 
 <section class='company-container'>
   {{#each allSalaries}}
@@ -14,13 +9,13 @@
     <article class='companies'>
 
       <ul>
-        <li> <span>job title:</span> {{this.title}}</li>
-        <li><span>company:</span>{{this.company.name}}</li>
-        <li><span>annual compensation:</span>{{this.compensation}}€</li>
-        <li><span>city:</span>{{this.location}}</li>
-        <li><span>level:</span>{{this.level}}</li>
-        <li><span>seniority:</span>{{this.company_xp}}</li>
-        <li><span>years of experience:</span>{{this.total_xp}}</li>
+        <li> <span>job title: </span> {{this.title}}</li>
+        <li><span>company: </span>{{this.company.name}}</li>
+        <li><span>annual compensation: </span>{{this.compensation}}€</li>
+        <li><span>city: </span>{{this.location}}</li>
+        <li><span>level: </span>{{this.level}}</li>
+        <li><span>seniority: </span>{{this.company_xp}}</li>
+        <li><span>years of experience: </span>{{this.total_xp}}</li>
       </ul>
     </article>
 
