@@ -1,0 +1,80 @@
+.form-update {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin: 3rem auto 0 auto;
+    align-self: center;
+    width: 100%;
+    max-width: 50rem;
+
+}
+
+
+
+#editform {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    margin: 3rem auto 3rem auto;
+    gap: 1.3rem;
+    background-color: #C7DDCC;
+    border-radius: 10px;
+    width: 100%;
+    padding: 4rem 6rem 4rem 6rem;
+    text-align: center;
+}
+
+
+#editForm input,
+#editForm select {
+    margin-top: 0.7rem;
+    border: none;
+    border-radius: 8px;
+    padding: 0.8rem;
+    width: 40rem;
+
+}
+
+#editForm {
+    width: 100%;
+}
+
+button {
+    all: unset;
+    font-weight: 600;
+    color: #16123F;
+    text-decoration: none;
+    padding: 0.3rem 1.5rem;
+    background-color: white;
+    box-shadow: 0px 4px 0px 0px #FFE26A;
+    border-radius: 8px;
+    align-self: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+button:hover {
+    transition: all 0.2s ease;
+    transform: scale(1.1);
+}
+
+
+.reviewBtns {
+    margin-top: 2rem;
+    gap: 1rem;
+    display: flex;
+    justify-content: center;
+}
+
+
+#updateP {
+    color: #16123F;
+    font-size: 1.9rem;
+}
+
+h4 {
+    font-size: 1.7rem;
+    color: #16123F;
+}
