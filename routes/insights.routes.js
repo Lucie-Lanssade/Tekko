@@ -37,7 +37,13 @@ router.get("/company", isLoggedIn, async (req, res, next) => {
         }, 0) / reviews.length;
     }
 
-    res.render("company", { allCompanies, oneCompany, reviews, globalNote });
+    res.render("company", {
+      allCompanies,
+      oneCompany,
+      reviews,
+      globalNote,
+      stylesheets: { stylesheets: ["company"] },
+    });
   } catch (error) {
     next(error);
   }

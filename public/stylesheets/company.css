@@ -1,3 +1,94 @@
 * {
-    background-color: brown;
+    box-sizing: border-box;
+    list-style-type: none;
+}
+
+body {
+    background-image: url('/images/layered-waves-haikei.svg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+
+
+h1 {
+    color: white;
+    font-size: 3rem;
+    margin: 50px;
+    display: flex;
+    justify-content: center;
+}
+
+#optionValue {
+    text-align: center;
+    color: black;
+}
+
+h2 {
+    text-align: center;
+    margin: 10px;
+}
+
+p span:nth-child(1) {
+    font-weight: bold;
+}
+
+#companyInfos {
+    background-color: #f1f1f1ea;
+    border-radius: 8px;
+    text-align: center;
+    width: 470px;
+    padding: 10px;
+    margin: 50px auto;
+    font-size: 1.4rem;
+
+}
+
+#companyInfos h2,
+#companyInfos h2 div {
+    color: black;
+}
+
+#companyInfos ul li {
+    color: black;
+    margin: 10px;
+}
+
+#btnSearchCompany {
+    all: unset;
+    font-weight: 600;
+    color: #16123F;
+    text-decoration: none;
+    padding: 0.3rem 1.5rem;
+    background-color: white;
+    box-shadow: 0px 4px 0px 0px #FFE26A;
+    border-top-right-radius: 10px;
+    border-bottom-right-radius: 10px;
+    align-self: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    height: 35px;
+}
+
+#btnSearchCompany:hover {
+    transition: all 0.2s ease;
+    transform: scale(1.02);
+}
+
+select {
+    border-top-left-radius: 10px;
+    border-bottom-left-radius: 10px;
+    height: 45px;
+    border: none;
+    padding: 0 1em 0 0;
+    margin: 0;
+    font-family: inherit;
+    font-size: inherit;
+    cursor: inherit;
+    line-height: inherit;
+}
+
+li span {
+    font-weight: bold;
 }
