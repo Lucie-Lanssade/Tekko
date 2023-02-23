@@ -78,91 +78,17 @@
         </form>
         </div>
     
-        <div class="form-update">
-            <h2>Update review</h2>
-        <form id="editform">
-            <div>
-                <label for='idEdit'> id : </label>
-                <input type='text' required id='idEdit' name='idEdit' placeholder='id' />
-            </div>
-            <div>
-                    <label for='companyEdit'>Company : </label>
-                    <input list="companyCreated" required id="companyEdit" name='companyEdit' placeholder='Company' />
-                    <datalist id="companyCreated">
-                        {{#each allCompanies}}
-                        <option value="{{name}}">
-                            {{/each}}
-                    </datalist>
 
-                </div>
-            <div>
-                <label for='titleEdit'>Job title : </label>
-                <input type='text' required id='titleEdit' name='titleEdit' placeholder='Title' />
-            </div>
-            <div>
-                <label for='locationEdit'>Location : </label>
-                <input type='text' id="locationEdit" required name='locationEdit' placeholder='Location' />
-            </div>
-            <div>
-                <label for='compensationEdit'>Compensation : </label>
-                <input type='text' id="compensationEdit" required name='compensationEdit' placeholder='compensation' />
-            </div>
-            <div>
-                <label for='levelEdit'>Level : </label>
-                <select name="levelEdit" id="levelEdit" required>
-                    <option value="Junior">Junior</option>
-                    <option value="Intermediate">intermediate</option>
-                    <option value="Senior">senior</option>
-                </select>
-            </div>
-            <div>
-                <label for='companyXpEdit'>Number company exp : </label>
-                <input type='text' id="companyXpEdit" required name='companyXpEdit'
-                    placeholder='number of your experience in this company' />
-            </div>
-            <div>
-                <label for='noteEdit'>Note : </label>
-                <select name="noteEdit" id="noteEdit" required>
-                    <option value="0">0</option>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                    <option value="6">6</option>
-                    <option value="7">7</option>
-                    <option value="8">8</option>
-                    <option value="9">9</option>
-                    <option value="10">10</option>
-                </select>
-
-            </div>
-            <div>
-                <label for='totalXpEdit'> Number field exp : </label>
-                <input type='text' id="totalXpEdit" required name='totalXpEdit'
-                    placeholder='number of your experience in this field' />
-            </div>
-            <div>
-                <label for='companyReviewEdit'> Comment : </label>
-                <input type='text' required id="companyReviewEdit" name='companyReviewEdit' placeholder='Comment' />
-            </div>
-
-            <button id="editBtn" type="submit">Update review</button>
-
-        </form>
-        </div>
-
-        <div class="deleteBtn">
+        {{!-- <div class="deleteBtn">
             <h2>Delete review</h2>
                 <label for='idDelete'> ID to delete : </label>
                 <input type='text' required id='idDelete' name='idDelete' placeholder='delete id' />
                 <button id="delete-one">Delete one</button>
-        </div>
+        </div> --}}
     </div>
 
     <div class="userContainer">
         <div class="user-info">
-            <div class="idInput"></div>
             <div class="userCompany"></div>
             <div class="userLocation"></div>
             <div class="userJob"></div>
@@ -172,12 +98,12 @@
             <div class="userXp"></div>
             <div class="jobXp"></div>
             <div class="userComment"></div>
+         
         </div>
     </div>
 </div>
     <template id="template">
         <div class="user-info">
-            <div class="idInput">Id: <span></span></div>
             <div class="userCompany">Company: <span></span></div>
             <div class="userLocation">Location: <span></span></div>
             <div class="userJob">Job title: <span></span></div>
@@ -187,5 +113,7 @@
             <div class="userXp">Number field exp: <span></span></div>
             <div class="jobXp">Number current job exp: <span></span></div>
             <div class="userComment">Comment:<span></span></div>
+            <button class="btn-update"><a class="UpdateBtn" href="">Update</a></button>
+            <button><a class="btnDelete" href="">Delete</a></button>
         </div>
     </template>

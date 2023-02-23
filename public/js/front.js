@@ -20,7 +20,8 @@ const companyXpEdit = document.getElementById("companyXpEdit");
 const noteEdit = document.getElementById("noteEdit");
 const totalXpEdit = document.getElementById("totalXpEdit");
 const companyReviewEdit = document.getElementById("companyReviewEdit");
-const idDelete = document.getElementById("idDelete");
+const formCreateMsg = document.querySelector(".form-create");
+const btnDelete = document.getElementById("btnDelete");
 
 const myUrl = "http://127.0.0.1:5005/insights";
 
@@ -30,7 +31,7 @@ axios.defaults.withCredentials = true;
 function displayUser(element) {
   const cloneUser = template.content.cloneNode(true);
   //recuperer le nom de la compagnie pose probleme car on recupere que l'id ... trouver le moyen d'attendre l'objet de company
-  cloneUser.querySelector(".idInput span").textContent = element._id;
+
   cloneUser.querySelector(".userCompany span").textContent =
     element.company.name;
   cloneUser.querySelector(".userLocation span").textContent = element.location;
@@ -43,6 +44,10 @@ function displayUser(element) {
   cloneUser.querySelector(".jobXp span").textContent = element.company_xp;
   cloneUser.querySelector(".userComment span").textContent =
     element.company_review;
+  cloneUser.querySelector(".UpdateBtn").href = `/insights/${element._id}/edit`;
+  cloneUser.querySelector(
+    ".btnDelete"
+  ).href = `/insights/${element._id}/delete`;
   userContainer.append(cloneUser);
 }
 
@@ -92,6 +97,10 @@ async function createUser(event) {
     const { data } = await axios.post(myUrl, userCreate);
     console.log(data);
     displayAll();
+    const msg = document.createElement("p");
+    msg.style.color = "green";
+    msg.innerHTML = "Congrats ! Your review is now created ! ";
+    formCreateMsg.appendChild(msg);
   } catch (error) {
     console.log(error);
   }
@@ -102,8 +111,6 @@ async function createUser(event) {
 async function updateReview(event) {
   event.preventDefault();
   const id = idEdit.value;
-  // const companyName = companyEdit.value;
-  // le populate pose probleme ici je narrive pas a acceder la name de company
   const title = titleEdit.value;
   const location = locationEdit.value;
   const compensation = compensationEdit.value;
@@ -114,7 +121,6 @@ async function updateReview(event) {
   const company_review = companyReviewEdit.value;
   const reviewEdit = {
     id,
-    // companyName,
     title,
     location,
     compensation,
@@ -135,22 +141,20 @@ async function updateReview(event) {
 }
 
 //DELETE
-document
-  .getElementById("delete-one")
-  .addEventListener("click", async function () {
-    let idInput = idDelete.value;
-    try {
-      const deleteCharacter = await axios.delete(
-        myUrl + "/userInfos/" + `${idInput}`
-      );
-      console.log(deleteCharacter, "has been deleted");
-      displayAll();
-    } catch (error) {
-      console.log(error);
-    }
-  });
+// document
+//   .getElementById("delete-one")
+//   .addEventListener("click", async function () {
+//     let idInput = idDelete.value;
+//     try {
+//       const deleteCharacter = await axios.delete(
+//         myUrl + "/userInfos/" + `${idInput}`
+//       );
+//       console.log(deleteCharacter, "has been deleted");
+//       displayAll();
+//     } catch (error) {
+//       console.log(error);
+//     }
+//   });
 
 displayAll();
 document.querySelector("#createForm").addEventListener("submit", createUser);
-
-document.getElementById("editform").addEventListener("submit", updateReview);

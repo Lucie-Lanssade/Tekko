@@ -1,3 +1,5 @@
+const Insights = require("../models/insights.model");
+
 const isLoggedIn = (req, res, next) => {
   if (!req.session.currentUser) {
     return res.redirect("/auth/login");
@@ -21,8 +23,21 @@ const exposeUserToView = (req, res, next) => {
   next();
 };
 
+const isSameUser = async (req, res, next) => {
+  if (!req.session.currentUser) {
+    return res.redirect("/auth/login");
+  }
+  const insight = await Insights.findById(req.params.id);
+  if (insight.creator.toString() === req.session.currentUser._id.toString()) {
+    //req.insight = insight;
+    return next();
+  }
+  res.redirect("/");
+};
+
 module.exports = {
   isLoggedIn,
   isLoggedOut,
   exposeUserToView,
+  isSameUser,
 };
