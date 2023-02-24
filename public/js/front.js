@@ -23,8 +23,8 @@ const companyReviewEdit = document.getElementById('companyReviewEdit');
 const formCreateMsg = document.querySelector('.form-create');
 const btnDelete = document.getElementById('btnDelete');
 
-const myUrl = 'http://127.0.0.1:5005/insights';
-// const myUrl = 'https://tekko.onrender.com/insights';
+// const myUrl = 'http://127.0.0.1:5005/insights';
+const myUrl = 'https://tekko.onrender.com/insights';
 
 //permet de nous renvoyer les cookies de l'utilisateur
 axios.defaults.withCredentials = true;
