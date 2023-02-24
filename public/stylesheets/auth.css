@@ -1,20 +1,27 @@
-form {
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
 
+body {
+    text-align: center;
+}
+
+form {
     display: flex;
     flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    margin: 3rem auto 3rem auto;
+    align-items: center;
+    margin: 20px auto;
     gap: 2rem;
     background-color: #C7DDCC;
     border-radius: 10px;
-    max-width: 25rem;
-    padding-top: 3rem;
-    padding-bottom: 2rem;
-    padding-right: 5rem;
+    width: 400px;
+    padding-top: 50px;
 }
 
 form input {
+    display: inline-block;
     border: none;
     border-radius: 8px;
     padding: .8rem;
@@ -32,17 +39,15 @@ form button {
     background-color: white;
     box-shadow: 0px 4px 0px 0px #FFE26A;
     border-radius: 8px;
-
-    margin-left: 6rem;
-    margin-top: 2rem;
     align-self: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
 }
 
-
-
-
-
-
+button:hover {
+    transition: all 0.2s ease;
+    transform: scale(1.1);
+}
 
 
 
@@ -69,36 +74,12 @@ a {
 }
 
 
-/* 
-#signupForm {
-
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    justify-content: center;
-    margin: 3rem auto 3rem auto;
-    gap: 2rem;
-    background-color: #C7DDCC;
-    border-radius: 10px;
-    max-width: 25rem;
-    padding-top: 3rem;
-    padding-bottom: 2rem;
-
-} */
-
-
 .signupFormContainer {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    margin: 3rem auto 3rem auto;
+    margin: 0 auto;
     gap: 2rem;
     background-color: #C7DDCC;
     border-radius: 10px;
     max-width: 25rem;
-    padding-top: 3rem;
-    padding-bottom: 2rem;
 }
 
 #signupForm input {
@@ -106,12 +87,6 @@ a {
 
 }
 
-
-#signupForm div {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
 
 h3 {
     color: white;

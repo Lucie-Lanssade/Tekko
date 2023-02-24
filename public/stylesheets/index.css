@@ -42,7 +42,13 @@ nav {
 #logo a {
     font-weight: 600;
     text-decoration: none;
-    color: #16123F
+    color: #16123F;
+    transition: all 0.5s ease;
+}
+
+#logo a:hover {
+    font-weight: bold;
+    transition: all 0.5s ease;
 }
 
 
@@ -63,7 +69,13 @@ nav {
     box-shadow: 0px 4px 0px 0px rgba(255, 255, 255, 0.75);
     border-radius: 8px;
     margin-right: 1.7rem;
+    transition: all 0.2s ease;
+}
 
+
+#navLogin:hover {
+    transition: all 0.2s ease;
+    transform: scale(1.1);
 }
 
 #navSignup {
@@ -76,8 +88,15 @@ nav {
     box-shadow: 0px 4px 0px 0px rgba(117, 201, 183, 0.75);
     border-radius: 8px;
     margin-right: 1rem;
-
+    transition: all 0.2s ease;
 }
+
+
+#navSignup:hover {
+    transition: all 0.2s ease;
+    transform: scale(1.1);
+}
+
 
 .logs {
     display: flex;
@@ -95,7 +114,6 @@ nav {
     box-shadow: 0px 4px 0px 0px rgba(117, 201, 183, 0.75);
     border-radius: 8px;
     margin-right: 1rem;
-
     cursor: pointer;
     transition: all 0.2s ease;
 }
@@ -121,7 +139,6 @@ nav {
     margin-right: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
-
 }
 
 
