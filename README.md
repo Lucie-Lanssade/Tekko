@@ -4,6 +4,7 @@
 Tekko allows tech newcomers to access salaries insights and  anonymous reviews from real employees.
 Users can add, edit,delete and access their reviews in a very simple way with a user-friendly interface (full CRUD).
 This website  was coded in 4 days on the fifth week of the IronHack web development bootcamp.
+Contributors: Jean-Luc Tan https://github.com/jltp2c / Lucie Lanssade https://github.com/Lucie-Lanssade
 
 
 ## Link
