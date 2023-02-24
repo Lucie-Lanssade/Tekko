@@ -7,6 +7,10 @@
     <p>Did you ever work for a company and wish you could have shared your experiences with others? Now you can! create a review,share your insights and help others who may be considering working there.Give others a better understanding of what they can expect. By contributing to our anonymous review system, you'll be helping to create a more transparent job market and empowering others to make informed decisions about their careers. So, why not take a few minutes to share your experience and help others?</p>
 </div>
 
+<div class="accessReviews">
+     <a href="#acessRev">check my review(s)</a>
+</div>
+
 {{#if errorMessage}}
 <p class='error'>{{errorMessage}}</p>
 {{/if}}
@@ -99,7 +103,7 @@
 <div>
             <h4 id="missed">Missed something? Update or delete your reviews here!</h4>
         </div>
-    <div class="userContainer">
+    <div class="userContainer" id="acessRev">
         <div class="user-info">
             <div class="userCompany"></div>
             <div class="userLocation"></div>
@@ -130,7 +134,7 @@
             <div class="userComment">Comment:<span></span></div>
             <div class="reviewBtns">
             <button class="btn-update"><a class="UpdateBtn" href="">Update</a></button>
-            <button><a class="btnDelete" href="">Delete</a></button>
+            <button class="btn-Delete"><a class="btnDelete" href="">Delete</a></button>
             </div>
         </div>
     </template>

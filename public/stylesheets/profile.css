@@ -3,9 +3,13 @@ body {
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
+
 }
 
 
+html {
+    scroll-behavior: smooth;
+}
 
 
 
@@ -118,6 +122,24 @@ p {
 }
 
 
+.accessReviews a {
+    text-decoration: none;
+    font-weight: 800;
+    text-align: center;
+    color: white;
+    border: 2px solid white;
+    border-radius: 12px;
+
+    padding: 1rem 2rem;
+}
+
+.accessReviews {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+    margin: 0 auto;
+
+}
 
 /* CREATED REVIEWS STYLE */
 
@@ -177,4 +199,19 @@ p {
     gap: 1rem;
     display: flex;
     justify-content: center;
+
+
+}
+
+
+.btn-update,
+.btn-Delete {
+    transition: all 0.20s ease;
+}
+
+.btn-update:hover,
+.btn-Delete:hover {
+    transition: all 0.20s ease;
+    transform: scale(1.1);
+
 }
