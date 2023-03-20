@@ -45,6 +45,11 @@ p span:nth-child(1) {
 
 }
 
+
+.infoCompany ul {
+    margin-bottom: 1rem;
+}
+
 #companyInfos h2,
 #companyInfos h2 div {
     color: black;

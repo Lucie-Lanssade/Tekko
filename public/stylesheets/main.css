@@ -5,46 +5,33 @@ body {
     background-repeat: no-repeat;
 }
 
-.title {
-    position: relative
-}
+
 
 .title h1 {
     color: white;
-    /* text-align: center; */
-    text-justify: center;
+    margin: 0 auto;
     font-size: 5rem;
     max-width: 50rem;
-    margin: 5rem auto 0 auto;
-    position: absolute;
-    top: 100px;
-    left: 200px;
-}
-
-.images {
-    position: relative;
-    max-width: 100%;
-    height: 100%;
-}
+    padding: 5rem 0 4rem 0;
 
 
-#review1 {
-    width: 25rem;
-    height: auto;
-    position: absolute;
-    bottom: 26rem;
-    right: 20rem;
-    filter: opacity(0.8)
-}
-
-#review2 {
-    width: 25rem;
-    height: auto;
-    position: absolute;
-    bottom: 16rem;
-    right: 30rem;
 
 }
+
+/* .title {
+    text-align: center;
+} */
+
+.mainCenter {
+    margin: 3rem auto 3 rem auto;
+    gap: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
 
 #signBtn {
     font-weight: 800;
@@ -55,16 +42,29 @@ body {
     /* box-shadow: 6px 8px 5px 0px rgba(0, 0, 0, 0.5); */
     box-shadow: 0px 4px 0px 0px rgba(117, 201, 183, 0.75);
     border-radius: 8px;
-    margin-right: 1rem;
-    position: absolute;
-    bottom: 10rem;
-    right: 78rem;
-    transition: all 0.2s ease;
+
+    margin: 2rem auto 0 auto;
+
 }
+
+
+.mainBtn {
+    display: flex;
+    justify-content: center;
+}
+
+.mainP {
+    max-width: 70rem;
+    font-weight: 800;
+    padding: 0 2rem;
+    text-align: justify;
+
+
 
 #signBtn:hover {
     transition: all 0.2s ease;
     transform: scale(1.1);
+
 }
 
 h1 {
@@ -74,34 +74,3 @@ h1 {
 }
 
 
-@media screen and (max-width : 1500px) {
-    #review1 {
-        width: 20rem;
-        bottom: 20rem;
-        right: 10rem;
-        filter: opacity(0.8)
-    }
-
-    #review2 {
-        width: 20rem;
-        height: auto;
-        position: absolute;
-        bottom: 12rem;
-        right: 20rem;
-    }
-
-    .title h1 {
-        font-size: 2.6rem;
-        max-width: 50rem;
-        margin: 5rem auto 0 auto;
-        position: absolute;
-        top: 100px;
-        left: 90px;
-        width: 600px;
-    }
-
-    #signBtn {
-        bottom: 10rem;
-        right: 60rem;
-    }
-}
